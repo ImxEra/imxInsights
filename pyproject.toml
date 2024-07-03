@@ -1,0 +1,110 @@
+[tool.ruff]
+target-version = "py312"
+
+[tool.ruff.lint]
+extend-select = ["I", "TRY", "UP"]
+
+[tool.pytest.ini_options]
+addopts = "--cov=imxInsights/ --cov-report=term-missing --ignore=test_build.py"
+asyncio_mode = "strict"
+
+
+
+
+[tool.hatch]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.version]
+source = "regex_commit"
+commit_message = "🚀 Version {new_version}"
+path = "imxInsights/__init__.py"
+tag_sign = false
+
+[tool.hatch.envs.default]
+python = "3.12"
+dependencies = [
+    "black",
+    "bumpversion",
+    "flake8-black",
+    "flake8-docstrings",
+    "flake8",
+    "isort",
+    "mypy",
+    "pre-commit",
+    "pytest",
+    "pytest-cov",
+    "pytest-mock",
+    "markdown-include",
+    "mike",
+    "mkdocs",
+    "mkdocs-jupyter",
+    "mkdocs-material",
+    "mkdocs-mermaid2-plugin",
+    "mkdocstrings[crystal, python]>=0.18",
+    "pymdown-extensions",
+    "python-dotenv",
+    "cryptography",
+    "matplotlib",
+]
+
+[[tool.hatch.envs.test.matrix]]
+python = ["3.10", "3.11", "3.12"]
+
+[tool.hatch.envs.default.scripts]
+test = "pytest"
+test-cov-xml = "pytest --cov-report=xml"
+lint = [
+  "ruff format .",
+  "ruff --fix .",
+  "mypy imxInsights/",
+]
+lint-check = [
+  "ruff format --check .",
+  "ruff .",
+  "mypy imxInsights/",
+]
+docs-serve = "mkdocs serve"
+docs-build = "mkdocs build"
+
+[build-system]
+requires = ["hatchling", "hatch-regex-commit"]
+build-backend = "hatchling.build"
+
+[project]
+name = "imxInsights"
+authors = [
+    { name = "Hzd", email = "Hazedd@users.noreply.github.com" },
+    { name = "ImxEra", email = "ImxEra@users.noreply.github.com" }
+]
+description = "python imx insights module to get information from imx files"
+readme = "README.md"
+dynamic = ["version"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: End Users/Desktop",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "loguru",
+    "lxml",
+    "shapely",
+    "pyproj",
+    "pandas",
+    "xlsxwriter",
+    "networkx",
+]
+
+[project.urls]
+Documentation = "https://ImxEra.github.io/imxInsights/"
+Source = "https://github.com/ImxEra/imxInsights"
+
+
+# todo: make date version
+# https://waylonwalker.com/hatch-version/
+# https://github.com/fleetingbytes/hatch-semver
