@@ -1,6 +1,6 @@
 # Contributing to imxInsights
 
-First off, ❤️ ️ ️thanks for taking the time to contribute! ❤️
+First off ❤️ ️ ️thanks for taking the time to contribute! 
 
 All types of contributions are encouraged and valued!!! Please make sure to read the relevant section before making your contribution.
 It will make it a lot easier for us maintainers and smooth out the experience for all involved. The community looks forward to your contributions.
@@ -96,7 +96,7 @@ Todo
 ## Code of Conduct
 
 This project and everyone participating in it is governed by the
-[Code of Conduct](https://github.com/Hazedd/imxInsightsCore/blob/master/CODE_OF_CONDUCT.md).
+[Code of Conduct](https://xxxxxx).
 By participating, you are expected to uphold this code. Please report unacceptable behavior
 to <>.
 

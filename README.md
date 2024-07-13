@@ -1,49 +1,28 @@
 # imxInsights
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/imxInsights)
-[![PyPI version](https://badge.fury.io/py/imxInsights.svg)](https://pypi.org/project/imxInsights)
 [![PyPI - Status](https://img.shields.io/pypi/status/imxInsights)](https://pypi.org/project/imxInsights/)
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/imxInsights)](https://pypi.org/project/imxInsights)
 
 [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com)
 [![Documentation Status](https://readthedocs.org/projects/ansicolortags/badge/?version=latest)](http://ansicolortags.readthedocs.io/?badge=latest)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 ![PyPI - License](https://img.shields.io/pypi/l/imxInsights)
 
-
-#### This repository host the imx 12.0 implementation for imx insights
-
 Documentation: https://xxxxxx
 
-Source Code: [https://github.com/Hazedd/imxInsightsCore](https://github.com/Hazedd/imxInsightsCore)
+Source Code: [https://xxxxxx](https://xxxxxx)
 
-!!! danger "Warning!" 
+***THIS LIBRARY IS NOT AFFILIATED WITH PRORAIL***, this is a personal project and is not owned or endorsed by ProRail. 
+Therefore, ProRail assumes no responsibility for the functionality, accuracy, or usage of this library. 
+***THE PUBLIC retains full ownership and responsibility for the codebase.*** 
+
+!!! danger "Warning!"  
+    - The goal of `imxInsights` is to extract information from imx files. **Please note that modifying, 
+    adding, deleting, or altering data is beyond the scope of this module**.
+    - `imxInsights` explicit supports imx versions 1.2.4, 5.0.0 and all major versions up to and including version 12.0.0.
     
-    The goal of `imxInsights` is to extract information from imx files. **Please note that modifying, adding, deleting, or altering data is beyond the scope of this module**. `imxInsights` supports imx versions 1.2.4 and 5.0.0 exclusively. 
-    Our aim is to stay compatible with the latest production versions of the imx model.
-
-!!! abstract
-    
-    `imxInsights` is designed to parse imx files, which may contain Situations or Projects with an InitialSituation 
-    and optionally a NewSituation. Each situation includes a repository that houses value objects. A value object represents an item of interest and is equipped with properties and methods to retrieve information. 
-    The module facilitates the creation of tabular views or spatial GeoJSON, and enables network queries using a networkx graph.
-
-
 !!! info "Audience"
-    
     The intended audience for `imxInsights` consists of end users with basic Python knowledge. Therefore, the module offers a minimalistic API that is thoroughly documented. 
     We leverage the remarkable `makedocs` plugins to effortlessly generate a polished website from documentations and markdown files.
-
-
-## Features
-- **Value Objects Repository**: Every object of interest is stored in a repository, utilizing puic as the default key. If no puic attribute is present, a configurable custom key is employed.
-- **RailConnection Geometry**: Generated from junctions referenced in the microLink From- and ToNode attributes, ensuring accurate spatial representation.
-- **Track Fragments and Demarcation Marker Objects**: Equipped with projected geometry for precise visualization and analysis.
-- **Area Classifier**: Classifies every value object within an imx project area (if has geometry), streamlining organization and analysis.
-- **View as DataFrame**: Easily convert value objects into a Pandas dataframe, providing a convenient data structure for analysis.
-- **View as GeoJSON**: Export data in GeoJSON format, preserving spatial information for interoperability and visualization.
-- **Referenced Objects Links**: Seamlessly access referenced objects as value objects, enhancing data accessibility and integrity.
-- **Difference Generator**: Enables comparison and discrepancy generation, with options for exporting in Excel and GeoJSON formats, facilitating efficient data validation and analysis.
-- **Network Graph**: Utilized for retrieving route information and creating geometry, facilitating comprehensive network analysis.
 
 ## Supported Python Versions
 This library is compatible with ***Python 3.10*** and above. 
@@ -52,52 +31,76 @@ This library is compatible with ***Python 3.10*** and above.
     ***3.9 and below will NOT be supported***.
 
 
+
+## This repository host the imx 12.0 implementation     
+
+Transitioning from version 1.2.4 / 5.0.0 to 12.0.0 of this library necessitates extensive changes and significant code 
+rewriting due to fundamental shifts in how imx files are utilized. Below, we outline a comprehensive roadmap that will 
+be continually updated until we reach the first stable version.
+
+
+
+### Roadmap
+
+#### Q3 2024 - init public release on github
+- [X] Imx Container POC to init project
+- [X] Imx 1.2.4 5.0.0 and 12.0.0 file import
+- [X] Add typehints fix mypy
+- [X] Setup mkdocs
+- [X] create pre commit formatting and type checking
+- [X] Imx single file 
+- [X] Imx zip container 
+- [X] Imx container metadata
+- [X] mkdocs for end user, we should commit to published api stuff not internals
+- [X] ImxCustomException and handler
+- [X] ImxExtension objects
+- [X] GML shapley geometry
+- [X] RailConnection shapley geometry
+- [X] Known parent and children
+- [ ] Add test and fixtures for supported Imx versions
+- [ ] Documentation update
+- [ ] GitHub actions release as wheel
+- [ ] Logo design 
+- [ ] Setup repo policy including GitHub Actions
+
+####  Q4 2024 - MVP library release on PyPI
+- [ ] Imx Diff
+- [ ] Imx Diff ignore Imx version difference
+- [ ] (Imx) Area's and area classifier
+- [ ] Pandas export
+- [ ] Geojson export
+- [ ] Excel output
+- [ ] RailConnectionInfos
+- [ ] TrackFragments
+- [ ] GitHub actions release on pypi
+
+#### Q1 2025 - Current features implementation
+- [ ] Ref as objects
+- [ ] nice ref display
+- [ ] parent path display
+- [ ] km by linear referencing
+- [ ] graph implementation
+- [ ] generate graph geometry
+- [ ] graph end user api
+- [ ] Imx single file metadata
+- [ ] Add Situation changes
+- [ ] 3d Measure calculator
+- [ ] Imx 1.0-RC release on pypi
+
+
+## Features
+todo
+
+
 ## Quick Start
+todo
 
-### Distribution and installation
-imxInsights is distributed on https://pypi.org and can be installed by the following pip command:
-
-``pip install imxInsights``
-
-***import, load file, get repo got insights!***
+## Distribution and installation
+todo
 
 ## Code samples and snippets
-```
-from imxInsight import Imx
+todo
 
-imx = Imx(file_path)
-
-init_repo = imx.project.initial_situation
-object_of_intrest = init_repo.get_by_puic(puic)
-
-pandas_df = imx.project.new_situation.get_pandas_df("Signal")
-```
-
-For more code samples and snippets in the example section / folder and use the api reference for exploration.
-
-
-# Contributing
+## Contributing
 Contributions welcome! For more information on the design of the library, see [contribution guidelines for this project](CONTRIBUTING.md).
-
-
-#  Projects used in this project
-[make](https://www.gnu.org/software/make/manual/make.html)
-, [flake8](https://flake8.pycqa.org/en/latest/)
-, [black](https://github.com/psf/black)
-, [mypy](https://mypy.readthedocs.io/en/stable/)
-, [iSort](https://github.com/PyCQA/isort)
-, [bumpversion](https://github.com/peritus/bumpversion)
-, [flit](https://flit.pypa.io/en/latest/)
-, [mkdocs](https://www.mkdocs.org/)
-, [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
-, [lxml](https://lxml.de/)
-, [pyproj](https://pypi.org/project/pyproj/)
-, [shapely](https://pypi.org/project/shapely/)
-, [loguru](https://pypi.org/project/loguru/)
-, [pandas](https://pandas.pydata.org/)
-, [xlsxwriter](https://pypi.org/project/XlsxWriter/)
-, [ruamel.yaml](https://pypi.org/project/ruamel.yaml/)
-, [networkx](https://pypi.org/project/networkx/)
-, [dateparser](https://pypi.org/project/dateparser/)
-
 

@@ -1,12 +1,18 @@
-from typing import Optional
+from typing import Any
 
 from imxInsights.exceptions.exceptionLevels import ErrorLevelEnum
 
 
 class CustomException(Exception):
-    """Custom exception class.
+    """
+    Custom exception class for handling errors with specific levels and optional data.
 
-    Attributes:
+    ??? info
+        This exception class allows for the specification of an error message,
+        an error level (using the ErrorLevelEnum), and optional additional data
+        that can provide more context about the error.
+
+    Args:
         msg: The exception message.
         level: The error level of the exception.
         data: Optional additional data associated with the exception.
@@ -16,15 +22,8 @@ class CustomException(Exception):
         self,
         msg: str,
         level: ErrorLevelEnum = ErrorLevelEnum.ERROR,
-        data: Optional[any] = None,
+        data: Any | None = None,
     ) -> None:
-        """Initializes the CustomException.
-
-        Args:
-            msg: The exception message.
-            level: The error level of the exception.
-            data: Optional additional data associated with the exception.
-        """
         super().__init__(msg)
         self.msg = msg
         self.level = level

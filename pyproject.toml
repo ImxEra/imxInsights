@@ -5,11 +5,8 @@ target-version = "py312"
 extend-select = ["I", "TRY", "UP"]
 
 [tool.pytest.ini_options]
-addopts = "--cov=imxInsights/ --cov-report=term-missing --ignore=test_build.py"
+addopts = "--cov=imxInsights --cov-report=term-missing --ignore=test_build.py"
 asyncio_mode = "strict"
-
-
-
 
 [tool.hatch]
 
@@ -22,31 +19,20 @@ commit_message = "🚀 Version {new_version}"
 path = "imxInsights/__init__.py"
 tag_sign = false
 
+# TODO: split to defatult and dev
 [tool.hatch.envs.default]
 python = "3.12"
 dependencies = [
-    "black",
-    "bumpversion",
-    "flake8-black",
-    "flake8-docstrings",
-    "flake8",
-    "isort",
     "mypy",
-    "pre-commit",
+    "ruff",
     "pytest",
     "pytest-cov",
-    "pytest-mock",
-    "markdown-include",
-    "mike",
-    "mkdocs",
-    "mkdocs-jupyter",
+    "pytest-asyncio",
     "mkdocs-material",
-    "mkdocs-mermaid2-plugin",
-    "mkdocstrings[crystal, python]>=0.18",
-    "pymdown-extensions",
-    "python-dotenv",
-    "cryptography",
-    "matplotlib",
+    "mkdocstrings[python]",
+    "pre-commit",
+    "filelock",
+    "distlib",
 ]
 
 [[tool.hatch.envs.test.matrix]]
@@ -56,14 +42,14 @@ python = ["3.10", "3.11", "3.12"]
 test = "pytest"
 test-cov-xml = "pytest --cov-report=xml"
 lint = [
-  "ruff format .",
-  "ruff --fix .",
-  "mypy imxInsights/",
+  "ruff format imxInsights/",
+  "ruff format --check imxInsights/",
+  "mypy imxInsights/ --check-untyped-defs",
 ]
 lint-check = [
-  "ruff format --check .",
-  "ruff .",
-  "mypy imxInsights/",
+  "ruff format --check imxInsights/",
+  "ruff check imxInsights/",
+  "mypy imxInsights/ --check-untyped-defs",
 ]
 docs-serve = "mkdocs serve"
 docs-build = "mkdocs build"
@@ -93,11 +79,15 @@ requires-python = ">=3.10"
 dependencies = [
     "loguru",
     "lxml",
+    "types-lxml",
     "shapely",
+    "types-shapely",
     "pyproj",
     "pandas",
     "xlsxwriter",
     "networkx",
+    "dateparser",
+    "types-dateparser",
 ]
 
 [project.urls]

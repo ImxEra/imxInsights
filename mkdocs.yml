@@ -1,122 +1,98 @@
-site_name: imxInsights
-site_description: IMX related Python packages
-use_directory_urls: false
+site_name: ImxInsights
+site_description: Python library for extracting information from IMX files.
 
-# https://github.com/danielfrg/mkdocs-jupyter
+repo_url: https://github.com/imxEra/ImxInsights
+repo_name: ImxInsights
+
 theme:
-  name: 'material'
-  custom_dir: docs-overrides
-  palette:
-    - scheme: default
-      primary: 'red'
-      accent: 'red'
-      toggle:
-        icon: material/weather-sunny
-        name: Switch to dark mode
-    - scheme: slate
-      primary: 'red'
-      accent: 'red'
-      toggle:
-        icon: material/weather-night
-        name: Switch to light mode
-  icon:
-    logo: material/account-supervisor
-  favicon: 'favicon.png'
-  features:
-    - navigation.instant
-    - navigation.top
-    - navigation.sections
-    - search.suggest
-    - search.highlight
-    - content.code.annotate
+    features:
+      - navigation.tabs
+      - navigation.tabs.sticky
+      - navigation.expand
+      # - toc.integrate
+      - search.suggest
+    name: material
+    icon:
+        logo: material/library
+    palette:
+        # Palette toggle for automatic mode
+        - media: "(prefers-color-scheme)"
+          toggle:
+            icon: material/brightness-auto
+            name: Switch to light mode
 
-repo_name: imxInsights
-repo_url: https://github.com/Hazedd/imxInsightsCore
-edit_uri: ""
+        # Palette toggle for light mode
+        - media: "(prefers-color-scheme: light)"
+          scheme: default
+          primary: deep purple
+          accent: deep orange
+          toggle:
+            icon: material/brightness-7
+            name: Switch to dark mode
+
+        # Palette toggle for dark mode
+        - media: "(prefers-color-scheme: dark)"
+          scheme: slate
+          primary: deep purple
+          accent: deep orange
+          toggle:
+            icon: material/brightness-4
+            name: Switch to light mode
+
+extra_css:
+  - stylesheets/extra.css
 
 markdown_extensions:
-  - toc:
-      permalink: true
-  - admonition
-  - pymdownx.details
-  - pymdownx.highlight:
-      anchor_linenums: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-  - attr_list
-  - tables
-  - def_list
+    - toc:
+        permalink: true
+    - pymdownx.highlight:
+        anchor_linenums: true
+    - pymdownx.tasklist:
+        custom_checkbox: true
+    - pymdownx.inlinehilite
+    - pymdownx.snippets
+    - pymdownx.superfences
+    - pymdownx.details
+    - admonition
 
 plugins:
-  - search
-  - mike
-  - mkdocs-jupyter:
-      theme: dark
-      include_source: True
-      include_requirejs: true
-  - mkdocstrings
-
-
+    - search
+    - mkdocstrings:
+        autodoc_ignore:
+            - '*._*'
+            - '*.__*'
+        handlers:
+            python:
+                import:
+                    - https://docs.python.org/3.12/objects.inv
+                    - https://shapely.readthedocs.io/en/latest/objects.inv
+                    - https://lxml.de/apidoc/objects.inv
+                options:
+                    docstring_style: google
 watch:
-  - imxInsights
-
-extra:
-  version:
-    provider: mike
+    - docs
+    - imxInsights
 
 nav:
-  - About: about.md
-  - Roadmap: roadmap.md
-  - Examples:
-      - Basic use:
-        - Load file get info: examples/imx-example.md
-        - Diff: todo.md
-        - Graph: todo.md
-      - Notebooks:
-          - Core: todo.md
-          - Diff: todo.md
-          - Graph: todo.md
-
-  - Reference:
-    - ImxInsights:
-      - Core:
-        - Imx: imxInsights/core/imx.md
-        - ImxSituationRepo: imxInsights/core/imxSituationRepo.md
-        - ImxObject: imxInsights/core/imxObject.md
-        - ImxPuic: imxInsights/core/imxPuic.md
-        - ImxAreas: imxInsights/core/area.md
-        - Tabular view: todo.md
-        - Spatial view: todo.md
-      - Diff:
-        - ImxDiff: imxInsights/diff/diff.md
-        - ImxObjectCompare: imxInsights/diff/compare.md
-        - imxChangeList: imxInsights/diff/change.md
-        - Excel output: todo.md
-        - GeoJson output: todo.md
-      - Graph:
-          - Creation: todo.md
-          - Queries: todo.md
-      - Utils:
-        - General: imxInsights/utils/general.md
-        - Xml: imxInsights/utils/xml.md
-        - Shapley: imxInsights/utils/shapely.md
-        - ShapleyGeojson: imxInsights/utils/shapelyGeojson.md
-    - Design:
-        - Core: todo.md
-        - Diff: todo.md
-        - Graph: todo.md
-  - Get Involved:
-      - Contribute: contribute.md
-      - Code of conduct: code_of_conduct.md
+    - About: index.md
+    - Getting started:
+        - Installation: context/installation.md
+        - Basic use: examples/basic_use.md
+        - Way of working: context/way_of_working.md
+    - Reference:
+        - ImxDomain:
+          - ContainerizedImx: reference/containerized_imx.md
+          - SingleFileImx: reference/single_file_imx.md
+          - ImxObject: reference/imx_object.md
+          - ImxFile: reference/imx_file.md
+        - ImxRepo:
+            - ImxRepo: reference/repo/imx_repo.md
+            - RepoBuilders: reference/repo/repo_builders.md
+            - BuildExceptions: reference/repo/repo_exceptions.md
+        - Exceptions:
+           - Custom Exceptions: reference/exceptions/exceptions.md
+           - Exception Handler: reference/exceptions/exceptions_handler.md
+           - ImxExceptions: reference/exceptions/exceptions_imx.md
+    - Contributing: contribution.md
+    - Code of conduct: code_of_conduct.md
+    - License: license.md

@@ -1,7 +1,8 @@
 import pyproj
 
-from lxml import etree as ET
-from shapely import Point, LineString, Polygon
+# from lxml import etree as ET
+from lxml.etree import _Element as Element
+from shapely import LineString, Point, Polygon
 
 
 class GmlShapleyFactory:
@@ -66,24 +67,30 @@ class GmlShapleyFactory:
         )
 
     @classmethod
-    def shapley(cls, gml_element: ET):
+    def shapley(cls, gml_element: Element):
         point = gml_element.find(".//{http://www.opengis.net/gml}Point")
         if point is not None:
-            return cls.gml_point_to_shapely(
-                point.find(".//{http://www.opengis.net/gml}coordinates").text
+            coordinates_element = point.find(
+                ".//{http://www.opengis.net/gml}coordinates"
             )
+            if coordinates_element is not None and coordinates_element.text is not None:
+                return cls.gml_point_to_shapely(coordinates_element.text)
 
         linestring = gml_element.find(".//{http://www.opengis.net/gml}LineString")
         if linestring is not None:
-            return cls.gml_linestring_to_shapely(
-                linestring.find(".//{http://www.opengis.net/gml}coordinates").text
+            coordinates_element = linestring.find(
+                ".//{http://www.opengis.net/gml}coordinates"
             )
+            if coordinates_element is not None and coordinates_element.text is not None:
+                return cls.gml_linestring_to_shapely(coordinates_element.text)
 
         polygon = gml_element.findall(".//{http://www.opengis.net/gml}Polygon")
         if len(polygon) == 1:
-            return cls.gml_polygon_to_shapely(
-                polygon[0].find(".//{http://www.opengis.net/gml}coordinates").text
+            coordinates_element = polygon[0].find(
+                ".//{http://www.opengis.net/gml}coordinates"
             )
+            if coordinates_element is not None and coordinates_element.text is not None:
+                return cls.gml_polygon_to_shapely(coordinates_element.text)
 
         raise NotImplementedError(
             f"gml shapley generation for {gml_element.tag} not supported"

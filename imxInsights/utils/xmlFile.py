@@ -1,7 +1,8 @@
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from lxml import etree as ET
+from lxml import etree
+from lxml.etree import _ElementTree as ElementTree
 
 from imxInsights.utils.helpers import hash_sha256
 
@@ -35,21 +36,21 @@ class XmlFile:
     """
 
     path: Path
-    root: ET.ElementTree = field(kw_only=True, hash=False, repr=False, default=None)
-    file_hash: str = field(init=False, hash=False, default=None)
-    tag: str = field(init=False, hash=False, default=None)
+    root: ElementTree | None = field(kw_only=True, hash=False, repr=False, default=None)
+    file_hash: str | None = field(init=False, hash=False, default=None)
+    tag: str | None = field(init=False, hash=False, default=None)
 
     def __post_init__(self) -> None:
         if self.root is not None:
             return
 
         if not self.exists:
-            raise ValueError(f"Invalid path {self.path}")
+            raise ValueError(f"Invalid path {self.path}")  # noqa: TRY003
 
         object.__setattr__(self, "file_hash", hash_sha256(self.path))
 
-        parser = ET.XMLParser(remove_comments=True)
-        root = ET.parse(self.path, parser)
+        parser = etree.XMLParser(remove_comments=True)
+        root = etree.parse(self.path, parser)
         object.__setattr__(self, "tag", root.getroot().tag)
 
         super().__setattr__("root", root)

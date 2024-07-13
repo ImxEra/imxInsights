@@ -1,0 +1,14 @@
+
+@media screen and (min-width: 1200px) {
+    .md-grid {
+        max-width: 80%;
+    }
+
+    .md-sidebar {
+        min-width: 15rem;
+    }
+    .md-nav__list {
+        min-width: 13rem;
+    }
+
+}

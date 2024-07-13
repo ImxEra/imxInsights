@@ -1,7 +1,7 @@
 import hashlib
 import json
 from pathlib import Path
-from typing import Optional
+from typing import Any
 
 
 def hash_sha256(path: Path):
@@ -62,7 +62,7 @@ def hash_dict_ignor_nested(dictionary: dict) -> str:
 
 def flatten_dict(
     data_dict: dict[str, dict | str | list],
-    skip_key: Optional[str] = "@puic",
+    skip_key: str | None = "@puic",
     prefix="",
     sep=".",
 ) -> dict[str, str]:
@@ -173,8 +173,8 @@ def flatten_dict(
 #     return nested_dict
 
 
-def parse_to_nested_dict(input_dict):
-    result = {}
+def parse_to_nested_dict(input_dict: dict[str, Any]) -> dict[str | int, Any]:
+    result: dict[str | int, Any] = {}
 
     for key, value in input_dict.items():
         parts = key.split(".")
@@ -182,7 +182,7 @@ def parse_to_nested_dict(input_dict):
 
         for part in parts[:-1]:
             if part.isdigit():
-                part = int(part)
+                part = str(part)
             if isinstance(d, list):
                 d.append({})
                 d = d[-1]
@@ -192,7 +192,7 @@ def parse_to_nested_dict(input_dict):
 
         last_part = parts[-1]
         if last_part.isdigit():
-            last_part = int(last_part)
+            last_part = str(last_part)
 
         if isinstance(d, list):
             d.append(value)

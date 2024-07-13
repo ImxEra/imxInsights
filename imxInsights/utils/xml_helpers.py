@@ -1,13 +1,13 @@
-from lxml import etree as ET
+from lxml.etree import _Element as Element
 
 
-def trim_tag(tag: ET._Element | str) -> str:
-    if isinstance(tag, ET._Element):
+def trim_tag(tag: Element | str) -> str:
+    if isinstance(tag, Element):
         tag = str(tag.tag)
     return tag.split("}")[1] if "}" in tag else tag
 
 
-def find_base_entity(elem: ET._Element) -> ET._Element:
+def find_base_entity(elem: Element | None) -> Element:
     while elem is not None and "puic" not in elem.keys():
         elem = elem.getparent()
     if elem is None:
@@ -15,7 +15,7 @@ def find_base_entity(elem: ET._Element) -> ET._Element:
     return elem
 
 
-def find_parent_entity(elem: ET._Element) -> ET._Element | None:
+def find_parent_entity(elem: Element) -> Element | None:
     assert "puic" in elem.keys(), "Element has no puic!"
     try:
         parent = find_base_entity(elem.getparent())
@@ -26,7 +26,7 @@ def find_parent_entity(elem: ET._Element) -> ET._Element | None:
 
 
 def lxml_element_to_dict(
-    node: ET.Element, attributes: object = True, children: object = True
+    node: Element, attributes: object = True, children: object = True
 ) -> dict[str, dict | str | list]:
     """
     Convert lxml.etree node into a dict. adapted from https://gist.github.com/jacobian/795571.
@@ -54,25 +54,25 @@ def lxml_element_to_dict(
 
         # Process element as tree element if the inner XML contains non-whitespace content
         if element.text and element.text.strip():
-            value = element.text
+            value_: dict | str = element.text
         else:
-            value = lxml_element_to_dict(element)
+            value_ = lxml_element_to_dict(element)
 
         if key in result:
             match = result[key]
             if isinstance(match, list):
-                match.append(value)
+                match.append(value_)
             else:
-                result[key] = [match, value]
+                result[key] = [match, value_]
         else:
-            result[key] = value
+            result[key] = value_
 
     return result
 
 
-def find_parent_with_tag(element: ET.Element, tags: list[str]) -> ET.Element:
+def find_parent_with_tag(element: Element, tags: list[str]) -> Element | None:
     """Iterate through parents until a parent with a tag in `tags` is found."""
-    current_element = element
+    current_element: Element | None = element  # Declare as _Element or None
     while current_element is not None:
         current_element = current_element.getparent()
         if current_element is not None and current_element.tag in tags:

@@ -3,25 +3,30 @@ import re
 
 from loguru import logger
 
+from imxInsights.domain.imxObject import ImxObject
 from imxInsights.exceptions.customException import CustomException
 from imxInsights.exceptions.exceptionLevels import ErrorLevelEnum
-from imxInsights.imxContainer.tree.imxTreeObject import ImxObject
 
 
 class ExceptionHandler:
-    """Handler for logging and managing exceptions."""
+    """
+    Handler for logging and managing exceptions.
+
+    ??? info
+        This class logs exceptions to a specified file, with log rotation occurring at 10 MB.
+        It can handle exceptions by logging the error message and additional data, and optionally
+        raise critical exceptions.
+
+    Args:
+        log_file: The file where logs should be written.
+        lvl: The default logging level.
+    """
 
     LOG_ROTATION_SIZE = "10 MB"
 
     def __init__(
         self, log_file: str, lvl: ErrorLevelEnum = ErrorLevelEnum.DEBUG
     ) -> None:
-        """Initializes the ExceptionHandler.
-
-        Args:
-            log_file: The file where logs should be written.
-            lvl: The default logging level.
-        """
         self.log_file = log_file
         self.log_lvl: ErrorLevelEnum = lvl
         logger.add(log_file, rotation=self.LOG_ROTATION_SIZE, level=lvl.value)
@@ -30,7 +35,13 @@ class ExceptionHandler:
     def handle_exception(
         exception: CustomException, return_log_as_str: bool = False
     ) -> str | None:
-        """Handles a given exception by logging it and optionally raising it.
+        """
+        Handles a given exception by logging it and optionally raising it.
+
+        ??? info
+            This method logs the exception message and any additional data. If the exception
+            level is CRITICAL, the exception is raised. It can also return the log message as a
+            string if specified.
 
         Args:
             exception: The exception to be handled.
@@ -40,7 +51,8 @@ class ExceptionHandler:
             The log message if return_log_as_str is True, otherwise None.
 
         Raises:
-            The given exception if its level is CRITICAL.
+            CustomException: If level is CRITICAL.
+
         """
         log_level = exception.level.value
 
@@ -59,20 +71,27 @@ class ExceptionHandler:
         if return_log_as_str:
             return f"{log_level} {log_msg}"
 
+        return None
+
     @classmethod
     def create_new_log(cls, log_file: str, lvl: ErrorLevelEnum = ErrorLevelEnum.DEBUG):
-        """Create a new log file.
+        """
+        Creates a new log file.
+
+        ??? info
+            This method removes any existing loggers and sets up a new log file with
+            the specified rotation size and logging level.
 
         Args:
-            log_file (str): The file where logs should be written.
-            lvl (ErrorLevelEnum, optional): The default logging level. Defaults to ErrorLevelEnum.DEBUG.
+            log_file: The file where logs should be written.
+            lvl: The default logging level.
         """
         logger.remove()
         logger.add(log_file, rotation=cls.LOG_ROTATION_SIZE, level=lvl.value)
 
 
-
 # todo: we should have a seperated logger for every container, we cam use container id as a key...
+#   make sure we got minimal shared state so we could use no GIL in the feature.
 timestamp = datetime.datetime.now().isoformat()
 safe_timestamp = re.sub(r"[:]", "-", timestamp)
 exception_handler = ExceptionHandler(f"imx_log_{safe_timestamp}.log")
