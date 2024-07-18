@@ -66,7 +66,7 @@ be continually updated until we reach the first stable version.
 - [X] Add test and fixtures for supported Imx versions,
 - [ ] Documentation update
 - [X] GitHub actions release as wheel
-- [ ] add more tests
+- [X] add more tests min 80%
 - [X] Logo design
 - [ ] Setup repo policy including GitHub Actions
 
