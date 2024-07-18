@@ -1,6 +1,6 @@
 # imxInsights
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ImxEra/imxInsights/main/docs/assets/logo.svg?sanitize=true" alt="IMX Insights">
+  <img src="https://raw.githubusercontent.com/ImxEra/imxInsights/main/docs/assets/logo.svg?token=GHSAT0AAAAAACVA5ICI4XLB3CWVN5V7S32GZUZPJUQ?sanitize=true" alt="IMX Insights">
 </p>
 
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/imxInsights)
