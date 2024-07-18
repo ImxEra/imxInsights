@@ -5,6 +5,8 @@ repo_url: https://github.com/imxEra/ImxInsights
 repo_name: ImxInsights
 
 theme:
+    favicon: assets/icon.svg
+    logo: assets/logo.svg
     features:
       - navigation.tabs
       - navigation.tabs.sticky
@@ -87,6 +89,7 @@ nav:
           - ImxFile: reference/imx_file.md
         - ImxRepo:
             - ImxRepo: reference/repo/imx_repo.md
+            - RepoConfig: reference/repo/config.md
             - RepoBuilders: reference/repo/repo_builders.md
             - BuildExceptions: reference/repo/repo_exceptions.md
         - Exceptions:

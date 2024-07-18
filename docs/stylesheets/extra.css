@@ -12,3 +12,17 @@
     }
 
 }
+
+.md-header__button.md-logo {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  margin-top: 10px;
+  height: 25%;
+  width: 25%;
+}

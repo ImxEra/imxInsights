@@ -12,4 +12,9 @@ class SingletonMeta(type):
         if cls not in cls._instances:
             instance = super().__call__(*args, **kwargs)
             cls._instances[cls] = instance
-        return cls._instances[cls]
+        else:
+            instance = cls._instances[cls]
+            instance.__init__(
+                *args, **kwargs
+            )  # Reinitialize the instance with new arguments
+        return instance

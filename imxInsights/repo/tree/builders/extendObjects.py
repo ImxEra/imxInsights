@@ -7,7 +7,7 @@ from imxInsights.domain.imxFile import ImxFile
 from imxInsights.domain.imxObject import ImxObject
 from imxInsights.exceptions import ErrorLevelEnum
 from imxInsights.exceptions.imxExceptions import ImxUnconnectedExtension
-from imxInsights.repo.config import Configuration
+from imxInsights.repo.config import Configuration, get_valid_version
 from imxInsights.repo.tree.buildExceptions import BuildExceptions
 from imxInsights.utils.helpers import flatten_dict
 
@@ -79,10 +79,10 @@ def extend_objects(
                 imx_object.properties = flatten_dict(imx_object_properties)
 
     # main method
-    version = imx_file.imx_version
+    valid_version = get_valid_version(imx_file.imx_version)
     for object_type, ref_attr in Configuration.get_object_type_to_extend_config(
-        version
-    ).items():
+        valid_version
+    ).__dict__.items():
         if element is None:
             if imx_file.root is not None:
                 objects = [

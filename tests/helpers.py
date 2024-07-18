@@ -24,5 +24,3 @@ def workspace_path(*parts: str) -> Path:
 
 def sample_path(*parts: str) -> str:
     return str(workspace_path("sample_data", *parts))
-
-

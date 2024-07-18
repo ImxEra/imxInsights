@@ -1,4 +1,8 @@
 # imxInsights
+<p align="center">
+  <img src="/assets/logo.svg?sanitize=true" alt="IMX Insights">
+</p>
+
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/imxInsights)
 [![PyPI - Status](https://img.shields.io/pypi/status/imxInsights)](https://pypi.org/project/imxInsights/)
 
@@ -43,6 +47,8 @@ be continually updated until we reach the first stable version.
 ### Roadmap
 
 #### Q3 2024 - init public release on github
+![](https://progress-bar.dev/75?title=progresses)
+
 - [X] Imx Container POC to init project
 - [X] Imx 1.2.4 5.0.0 and 12.0.0 file import
 - [X] Add typehints fix mypy
@@ -57,10 +63,11 @@ be continually updated until we reach the first stable version.
 - [X] GML shapley geometry
 - [X] RailConnection shapley geometry
 - [X] Known parent and children
-- [ ] Add test and fixtures for supported Imx versions
+- [X] Add test and fixtures for supported Imx versions,
 - [ ] Documentation update
-- [ ] GitHub actions release as wheel
-- [ ] Logo design 
+- [X] GitHub actions release as wheel
+- [ ] add more tests
+- [X] Logo design
 - [ ] Setup repo policy including GitHub Actions
 
 ####  Q4 2024 - MVP library release on PyPI
