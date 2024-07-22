@@ -66,17 +66,16 @@ be continually updated until we reach the first stable version.
 - [X] Known parent and children
 - [X] Add test and fixtures for supported Imx versions,
 - [X] Refactor and shadow tree methods
-- [ ] Split imx object properties and extension props, optional merge
-- [ ] implement puic as a concept instead of passing keys to make clear what we use as a key.
+- [X] Split imx object properties and extension props, optional merge
 - [ ] Documentation update
-    - [ ] add and fix urls
+    - [X] add and fix urls
     - [X] installation, add wheel till pipy release
     - [ ] overlook on reference
     - [X] add examples to getting started
     - [X] change basic use
     - [ ] add start of way of working
 - [X] GitHub actions release as wheel
-- [X] add more tests min 80%
+- [X] a dd more tests min 80%
 - [X] Logo design
 - [ ] Setup repo policy including GitHub Actions
     - [ ] create workflow test
@@ -93,6 +92,7 @@ be continually updated until we reach the first stable version.
 - [ ] Pandas export
 - [ ] Geojson export
 - [ ] Excel output
+- [ ] implement puic as a concept instead of passing keys to make clear what we use as a key.
 - [ ] RailConnectionInfos
 - [ ] TrackFragments
 - [ ] GitHub actions release on pypi

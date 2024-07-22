@@ -1,4 +1,5 @@
 import warnings
+from collections import defaultdict
 from collections.abc import Iterable
 from typing import Optional
 
@@ -110,6 +111,14 @@ class ImxObject:
     @property
     def geographic_location(self) -> ImxGeographicLocation | None:
         return ImxGeographicLocation.from_element(self._element)
+
+    @property
+    def extension_properties(self) -> dict[str, str]:
+        extensions_dict = defaultdict(list)
+        for item in self.imx_extensions:
+            extensions_dict[f"extension.{item.tag}"].append(item.properties)
+        # todo: make flatten_dict also handle defaultdict
+        return flatten_dict(dict(extensions_dict))
 
     def extend_imx_object(self, imx_extension_object: "ImxObject") -> None:
         """

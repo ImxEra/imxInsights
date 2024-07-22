@@ -57,6 +57,8 @@ markdown_extensions:
     - pymdownx.superfences
     - pymdownx.details
     - admonition
+    - pymdownx.tabbed:
+        alternate_style: true
 
 plugins:
     - search

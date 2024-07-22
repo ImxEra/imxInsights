@@ -1,5 +1,4 @@
 from collections import defaultdict
-from typing import Any
 
 from lxml.etree import _Element as Element
 
@@ -9,7 +8,6 @@ from imxInsights.exceptions import ErrorLevelEnum
 from imxInsights.exceptions.imxExceptions import ImxUnconnectedExtension
 from imxInsights.repo.config import Configuration, get_valid_version
 from imxInsights.repo.tree.buildExceptions import BuildExceptions
-from imxInsights.utils.helpers import flatten_dict
 
 
 def extend_objects(
@@ -31,7 +29,6 @@ def extend_objects(
         build_exceptions: An object to collect exceptions that occur during the build process.
         imx_file: An object representing the IMX file to be processed.
         element: An optional XML element to narrow down the search scope within the IMX file.
-        extent_property_dict: Flag to determine if the properties of the extension objects should be included in the original object. Defaults to True.
 
     Raises:
         ValueError: If `element` is None and `imx_file.root` is also None.
@@ -66,16 +63,6 @@ def extend_objects(
 
         if extend:
             imx_object.extend_imx_object(extension_object)
-            # TODO: separate own props and extension!
-            modified_extension_properties = {
-                f"extension_{extension_object.tag}." + key: value
-                for key, value in extension_object.properties.items()
-            }
-            # Ensure properties are of the expected type for flatten_dict
-            imx_object_properties: dict[str, Any] = (
-                imx_object.properties | modified_extension_properties
-            )
-            imx_object.properties = flatten_dict(imx_object_properties)
 
     # main method
     valid_version = get_valid_version(imx_file.imx_version)

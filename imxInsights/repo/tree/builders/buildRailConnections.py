@@ -103,8 +103,8 @@ def build_rail_connections(
                 )
                 continue
 
-            from_node_ref = rail_connection.properties.get(
-                "extension_MicroLink.FromMicroNode.@nodeRef"
+            from_node_ref = rail_connection.extension_properties.get(
+                "extension.MicroLink.FromMicroNode.@nodeRef"
             )
             from_junction = find(from_node_ref) if from_node_ref else None
             if from_junction is None or from_junction.geographic_location is None:
@@ -116,8 +116,8 @@ def build_rail_connections(
                 )
                 continue
 
-            to_node_ref = rail_connection.properties.get(
-                "extension_MicroLink.ToMicroNode.@nodeRef"
+            to_node_ref = rail_connection.extension_properties.get(
+                "extension.MicroLink.ToMicroNode.@nodeRef"
             )
             to_junction = find(to_node_ref) if to_node_ref else None
             if to_junction is None or to_junction.geographic_location is None:
