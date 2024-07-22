@@ -1,6 +1,14 @@
 # Distribution and installation
 
-imxInsights is distributed on [PYPI](https://pypi.org) and can be installed by the following pip command:
+Until we achieve the MVP of the library, we will build a Python wheel upon each release, which you can download from GitHub. 
+In the future, we will release the new version on PyPI.
+
+
+## Version 0.1.x
+!!! info  
+    ***We recommend using the stable and feature richer 0.1.0 release on for imx versions "1.2.4" and "5.0.0".***
+
+The 0.1.x version of imxInsights is distributed on [PYPI](https://pypi.org) and can be installed by the following pip command:
 
 ```
 pip install imxInsights
@@ -8,19 +16,22 @@ pip install imxInsights
 
 
 ## Code samples and snippets
-Below are minimal examples, for more code samples and snippets in the example section / folder and use the api reference for exploration.
+Below are minimal examples to load single imx file or imx containers. 
+For more code samples and snippets in the example section / folder and use the api reference for exploration.
 
 
 ### Single file IMX
 
-```python
-**TODO**
+```py
+--8<-- "docs/examples/basic_use/singleImx_main.py"
 ```
+
 
 ### Containerized IMX
 
-```python
-**TODO**
+
+```py
+--8<-- "docs/examples/basic_use/containerImx_main.py"
 ```
 
 

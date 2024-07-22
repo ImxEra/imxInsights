@@ -35,7 +35,7 @@ class ImxContainer(ImxRepo):
 
         self._populate_project_metadata()
         self._populate_tree()
-        self.tree.build_extensions.handle_all()
+        self._tree.build_extensions.handle_all()
         logger.success(f"finished processing {Path(imx_file_path).name}")
 
     def _populate_project_metadata(self):
@@ -52,7 +52,7 @@ class ImxContainer(ImxRepo):
         Populate the tree with IMX files.
         """
         if self.files.signaling_design is not None:
-            self.tree.add_imx_file(self.files.signaling_design, self.container_id)
+            self._tree.add_imx_file(self.files.signaling_design, self.container_id)
 
             for petal in [
                 "furniture",
@@ -67,4 +67,4 @@ class ImxContainer(ImxRepo):
             ]:
                 imx_file = getattr(self.files, petal)
                 if imx_file is not None:
-                    self.tree.add_imx_file(imx_file, self.container_id)
+                    self._tree.add_imx_file(imx_file, self.container_id)

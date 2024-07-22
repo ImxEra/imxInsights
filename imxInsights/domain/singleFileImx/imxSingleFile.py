@@ -68,7 +68,7 @@ class ImxSituation(ImxRepo):
         # todo: make enum for imx type
         self.situation_type: str = situation_element.tag
         self._populate_tree(situation_element, imx_file)
-        self.tree.build_extensions.handle_all()
+        self._tree.build_extensions.handle_all()
 
     def _populate_tree(self, element: Element, imx_file: ImxFile):
         """
@@ -78,4 +78,4 @@ class ImxSituation(ImxRepo):
             element (ElementTree.Element): The XML element to add to the tree.
             imx_file (ImxSituationFile): The associated IMX5 file.
         """
-        self.tree.add_imx_element(element, imx_file, self.container_id)
+        self._tree.add_imx_element(element, imx_file, self.container_id)

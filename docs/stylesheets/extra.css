@@ -26,3 +26,21 @@
   height: 25%;
   width: 25%;
 }
+
+
+:root {
+    --icon-color-light: #000; /* Light mode color */
+    --icon-color-dark: #fff;  /* Dark mode color */
+}
+
+@media (prefers-color-scheme: dark) {
+    .logo {
+        color: var(--icon-color-dark);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .logo {
+        color: var(--icon-color-light);
+    }
+}

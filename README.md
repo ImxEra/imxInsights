@@ -1,7 +1,7 @@
 # imxInsights
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ImxEra/imxInsights/main/docs/assets/logo.svg?token=GHSAT0AAAAAACVA5ICI4XLB3CWVN5V7S32GZUZPJUQ" alt="IMX Insights">
-</p>
+![Image title](assets/logo-light.svg#only-light)
+![Image title](assets/logo.svg#only-dark)
+
 
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/imxInsights)
 [![PyPI - Status](https://img.shields.io/pypi/status/imxInsights)](https://pypi.org/project/imxInsights/)
@@ -11,9 +11,9 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 ![PyPI - License](https://img.shields.io/pypi/l/imxInsights)
 
-Documentation: https://xxxxxx
+**Documentation**: <a href="https://ImxEra.github.io/imxInsights/" target="_blank">https://ImxEra.github.io/imxInsights/</a>
 
-Source Code: [https://xxxxxx](https://xxxxxx)
+**Source Code**: <a href="https://github.com/ImxEra/imxInsights" target="_blank">https://github.com/ImxEra/imxInsights</a>
 
 ***THIS LIBRARY IS NOT AFFILIATED WITH PRORAIL***, this is a personal project and is not owned or endorsed by ProRail. 
 Therefore, ProRail assumes no responsibility for the functionality, accuracy, or usage of this library. 
@@ -28,13 +28,6 @@ Therefore, ProRail assumes no responsibility for the functionality, accuracy, or
     The intended audience for `imxInsights` consists of end users with basic Python knowledge. Therefore, the module offers a minimalistic API that is thoroughly documented. 
     We leverage the remarkable `makedocs` plugins to effortlessly generate a polished website from documentations and markdown files.
 
-## Supported Python Versions
-This library is compatible with ***Python 3.10*** and above. 
-
-!!! warning
-    ***3.9 and below will NOT be supported***.
-
-
 
 ## This repository host the imx 12.0 implementation     
 
@@ -43,14 +36,20 @@ rewriting due to fundamental shifts in how imx files are utilized. Below, we out
 be continually updated until we reach the first stable version.
 
 
+!!! danger "New concept, breaking changes!"  
+    ***This project is currently under active development and is not yet in its final form.***
+    ***As such, there may be frequent changes, incomplete features, or potential instability.***
+
+    ***-   We recommend using the stable and feature richer 0.1.0 release on for imx versions "1.2.4" and "5.0.0".***
 
 ### Roadmap
 
-#### Q3 2024 - init public release on github
-![](https://progress-bar.dev/75?title=progresses)
+#### Q3-1 2024 - init public release on github
+![](https://progress-bar.dev/85?title=progresses)
 
 - [X] Imx Container POC to init project
 - [X] Imx 1.2.4 5.0.0 and 12.0.0 file import
+- [X] Imx Config Class
 - [X] Add typehints fix mypy
 - [X] Setup mkdocs
 - [X] create pre commit formatting and type checking
@@ -64,13 +63,28 @@ be continually updated until we reach the first stable version.
 - [X] RailConnection shapley geometry
 - [X] Known parent and children
 - [X] Add test and fixtures for supported Imx versions,
+- [X] Refactor and shadow tree methods
+- [ ] Split imx object properties and extension props, optional merge
+- [ ] implement puic as a concept instead of passing keys to make clear what we use as a key.
 - [ ] Documentation update
+    - [ ] add and fix urls
+    - [X] installation, add wheel till pipy release
+    - [ ] overlook on reference
+    - [X] add examples to getting started
+    - [X] change basic use
+    - [ ] add start of way of working
 - [X] GitHub actions release as wheel
 - [X] add more tests min 80%
 - [X] Logo design
 - [ ] Setup repo policy including GitHub Actions
+    - [ ] create workflow test
+    - [ ] set up policies
+    - [X] make public
+    - [ ] setup docs
+- [ ] clean git by fresh upload :tata:
 
-####  Q4 2024 - MVP library release on PyPI
+####  Q3-2 2024 - MVP library release on PyPI
+- [ ] Ref as objects
 - [ ] Imx Diff
 - [ ] Imx Diff ignore Imx version difference
 - [ ] (Imx) Area's and area classifier
@@ -81,18 +95,25 @@ be continually updated until we reach the first stable version.
 - [ ] TrackFragments
 - [ ] GitHub actions release on pypi
 
-#### Q1 2025 - Current features implementation
-- [ ] Ref as objects
+
+#### Backlog current features implementation
+- [ ] Imx single file metadata
+- [ ] Add Situation changes
 - [ ] nice ref display
 - [ ] parent path display
 - [ ] km by linear referencing
 - [ ] graph implementation
 - [ ] generate graph geometry
 - [ ] graph end user api
-- [ ] Imx single file metadata
-- [ ] Add Situation changes
 - [ ] 3d Measure calculator
 - [ ] Imx 1.0-RC release on pypi
+
+
+## Supported Python Versions
+This library is compatible with ***Python 3.10*** and above. 
+
+!!! warning  
+    ***Python Typehints are awesome therefor 3.9 and below will NOT be supported***.
 
 
 ## Features

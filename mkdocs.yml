@@ -7,6 +7,7 @@ repo_name: ImxInsights
 theme:
     favicon: assets/icon.svg
     logo: assets/logo.svg
+
     features:
       - navigation.tabs
       - navigation.tabs.sticky

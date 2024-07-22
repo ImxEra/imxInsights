@@ -17,7 +17,7 @@ class MultiObjectTree(ObjectTree):
     def __init__(self):
         super().__init__()
 
-    def objects(self) -> Iterable[list[ImxObject]]:  # type: ignore
+    def get_all(self) -> Iterable[list[ImxObject]]:  # type: ignore
         """
         Get an iterable of all ImxObjects in the tree.
 

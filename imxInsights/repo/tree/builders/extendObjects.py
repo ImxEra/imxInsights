@@ -17,7 +17,6 @@ def extend_objects(
     build_exceptions: BuildExceptions,
     imx_file: ImxFile,
     element: Element | None,
-    extent_property_dict: bool = True,
 ):
     """
     Extends IMX objects in a tree structure with additional properties and handles exceptions.
@@ -67,16 +66,16 @@ def extend_objects(
 
         if extend:
             imx_object.extend_imx_object(extension_object)
-            if extent_property_dict:
-                modified_extension_properties = {
-                    f"extension_{extension_object.tag}." + key: value
-                    for key, value in extension_object.properties.items()
-                }
-                # Ensure properties are of the expected type for flatten_dict
-                imx_object_properties: dict[str, Any] = (
-                    imx_object.properties | modified_extension_properties
-                )
-                imx_object.properties = flatten_dict(imx_object_properties)
+            # TODO: separate own props and extension!
+            modified_extension_properties = {
+                f"extension_{extension_object.tag}." + key: value
+                for key, value in extension_object.properties.items()
+            }
+            # Ensure properties are of the expected type for flatten_dict
+            imx_object_properties: dict[str, Any] = (
+                imx_object.properties | modified_extension_properties
+            )
+            imx_object.properties = flatten_dict(imx_object_properties)
 
     # main method
     valid_version = get_valid_version(imx_file.imx_version)

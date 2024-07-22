@@ -67,9 +67,9 @@ class ImxMultiRepo:
             containers (list[ImxRepo]): The list of containers to merge.
         """
         for container in containers:
-            self._merge_tree(container.tree.tree_dict, self.tree.tree_dict)
+            self._merge_tree(container._tree.tree_dict, self.tree.tree_dict)
             self._merge_tree(
-                container.tree.build_extensions.exceptions,
+                container._tree.build_extensions.exceptions,
                 self.tree.build_extensions.exceptions,
             )
         self.tree.update_keys()
@@ -83,9 +83,9 @@ class ImxMultiRepo:
         """
         container = deepcopy(container)
         self.containers.append(container)
-        self._merge_tree(container.tree.tree_dict, self.tree.tree_dict)
+        self._merge_tree(container._tree.tree_dict, self.tree.tree_dict)
         self._merge_tree(
-            container.tree.build_extensions.exceptions,
+            container._tree.build_extensions.exceptions,
             self.tree.build_extensions.exceptions,
         )
 
@@ -97,15 +97,15 @@ class ImxMultiRepo:
             container (ImxRepo): The container to remove.
         """
         self.containers.remove(container)
-        self._remove_tree(container.tree.tree_dict, self.tree.tree_dict)
+        self._remove_tree(container._tree.tree_dict, self.tree.tree_dict)
         self._remove_tree(
-            container.tree.build_extensions.exceptions,
+            container._tree.build_extensions.exceptions,
             self.tree.build_extensions.exceptions,
         )
 
     def _create_change_over_container_mapping(self):
         out = []
-        for imx_obj in self.tree.objects():
+        for imx_obj in self.tree.get_all():
             merged_dict: dict = {}
             all_keys: set = set()
             for d in imx_obj:
