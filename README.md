@@ -70,19 +70,21 @@ be continually updated until we reach the first stable version.
 - [ ] Documentation update
     - [X] add and fix urls
     - [X] installation, add wheel till pipy release
-    - [ ] overlook on reference
+    - [ ] overlook code and refactor if needed
+    - [ ] overlook reference documentation
     - [X] add examples to getting started
     - [X] change basic use
     - [ ] add start of way of working
 - [X] GitHub actions release as wheel
 - [X] a dd more tests min 80%
 - [X] Logo design
-- [ ] Setup repo policy including GitHub Actions
-    - [ ] create workflow test
-    - [ ] set up policies
+- [X] Setup repo policy including GitHub Actions
+    - [X] create workflow documentation
+    - [X] create workflow build
+    - [X] set up policies
     - [X] make public
-    - [ ] setup docs
-- [ ] clean git by fresh upload :tata:
+    - [X] setup docs
+- [ ] clean git by fresh upload 🎉
 
 ####  Q3-2 2024 - MVP library release on PyPI
 - [ ] Ref as objects
