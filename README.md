@@ -1,6 +1,6 @@
 # imxInsights
-![Image title](assets/logo-light.svg#only-light)
-![Image title](assets/logo.svg#only-dark)
+![Image title](https://raw.githubusercontent.com/ImxEra/imxInsights/main/docs/assets/logo-light.svg#only-light)
+![Image title](https://raw.githubusercontent.com/ImxEra/imxInsights/main/docs/assets/logo.svg#only-dark)
 
 
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/imxInsights)
