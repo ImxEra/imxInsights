@@ -2,8 +2,9 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ImxEra/imxInsights/main/docs/assets/logo.svg">
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/ImxEra/imxInsights/main/docs/assets/logo-light.svg">
-  <img alt="">
+  <img class="logo" alt="Logo" src="https://raw.githubusercontent.com/ImxEra/imxInsights/main/docs/assets/logo-light.svg">
 </picture>
+
 
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/imxInsights)
 [![PyPI - Status](https://img.shields.io/pypi/status/imxInsights)](https://pypi.org/project/imxInsights/)
@@ -47,7 +48,7 @@ be continually updated until we reach the first stable version.
 ### Roadmap
 
 #### Q3-1 2024 - init public release on github
-![](https://progress-bar.dev/85?title=progresses)
+![](https://progress-bar.dev/90?title=progresses)
 
 - [X] Imx Container POC to init project
 - [X] Imx 1.2.4 5.0.0 and 12.0.0 file import
@@ -66,7 +67,7 @@ be continually updated until we reach the first stable version.
 - [X] Known parent and children
 - [X] Add test and fixtures for supported Imx versions,
 - [X] Refactor and shadow tree methods
-- [X] Split imx object properties and extension props, optional merge
+- [X] Reverse merge extension props make methode to get them 
 - [ ] Documentation update
     - [X] add and fix urls
     - [X] installation, add wheel till pipy release
@@ -75,8 +76,10 @@ be continually updated until we reach the first stable version.
     - [X] add examples to getting started
     - [X] change basic use
     - [ ] add start of way of working
+    - [ ] fix custom css in right upper corner of docs pages
+    - [ ] fix dark and light thema logo inclusive github support (current only support github not mkdocs)
 - [X] GitHub actions release as wheel
-- [X] a dd more tests min 80%
+- [X] min tests coverage 80%
 - [X] Logo design
 - [X] Setup repo policy including GitHub Actions
     - [X] create workflow documentation

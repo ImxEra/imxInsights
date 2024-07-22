@@ -27,6 +27,10 @@
   width: 25%;
 }
 
+.md-source {
+    width: 200px;
+}
+
 
 :root {
     --icon-color-light: #000; /* Light mode color */
