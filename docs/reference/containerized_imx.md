@@ -1,6 +1,6 @@
 # Reference
 
-::: imxInsights.domain.containerizedImx.imxContainer
+::: imxInsights.file.containerizedImx.imxContainer
     options:
       show_root_heading: false
       show_source: false
@@ -11,7 +11,7 @@
       show_root_toc_entry: false
       inherited_members: true
 
-::: imxInsights.domain.containerizedImx.imxContainerFile
+::: imxInsights.file.containerizedImx.imxContainerFile
     options:
       show_root_heading: false
       show_source: false
@@ -22,7 +22,7 @@
       show_root_toc_entry: false
       inherited_members: true
 
-::: imxInsights.domain.containerizedImx.imxContainerMetadata
+::: imxInsights.file.containerizedImx.imxContainerMetadata
     options:
       show_root_heading: false
       show_source: false
@@ -36,7 +36,7 @@
 
 
 
-::: imxInsights.domain.containerizedImx.imxContainerFileReference
+::: imxInsights.file.containerizedImx.imxContainerFileReference
     options:
       show_root_heading: false
       show_source: false

@@ -2,8 +2,8 @@ from pathlib import Path
 
 from loguru import logger
 
-from imxInsights.domain.containerizedImx.imxContainerFile import ImxContainerFiles
-from imxInsights.domain.containerizedImx.imxContainerMetadata import (
+from imxInsights.file.containerizedImx.imxContainerFile import ImxContainerFiles
+from imxInsights.file.containerizedImx.imxContainerMetadata import (
     ImxContainerMetadata,
 )
 from imxInsights.repo.imxRepo import ImxRepo

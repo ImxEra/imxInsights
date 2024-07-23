@@ -5,10 +5,10 @@ from typing import Any
 
 import dateparser
 
-from imxInsights.domain.containerizedImx.imxContainerFileReference import (
+from imxInsights.file.containerizedImx.imxContainerFileReference import (
     ImxContainerFileReference,
 )
-from imxInsights.domain.imxFile import ImxFile
+from imxInsights.file.imxFile import ImxFile
 
 
 class ImxContainerFile(ImxFile):

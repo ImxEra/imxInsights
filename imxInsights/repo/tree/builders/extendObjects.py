@@ -2,10 +2,10 @@ from collections import defaultdict
 
 from lxml.etree import _Element as Element
 
-from imxInsights.domain.imxFile import ImxFile
 from imxInsights.domain.imxObject import ImxObject
 from imxInsights.exceptions import ErrorLevelEnum
 from imxInsights.exceptions.imxExceptions import ImxUnconnectedExtension
+from imxInsights.file.imxFile import ImxFile
 from imxInsights.repo.config import Configuration, get_valid_version
 from imxInsights.repo.tree.buildExceptions import BuildExceptions
 

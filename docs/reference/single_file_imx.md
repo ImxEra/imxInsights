@@ -1,6 +1,6 @@
 # Reference
 
-::: imxInsights.domain.singleFileImx.imxSingleFile
+::: imxInsights.file.singleFileImx.imxSingleFile
     options:
       show_root_heading: false
       show_source: false

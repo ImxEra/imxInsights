@@ -14,12 +14,12 @@ from shapely import (
 )
 from shapely.geometry import GeometryCollection
 
-from imxInsights.domain.containerizedImx.imxContainerFile import (
+from imxInsights.domain.imxGeographicLocation import ImxGeographicLocation
+from imxInsights.file.containerizedImx.imxContainerFile import (
     ImxDesignCoreFile,
     ImxDesignPetalFile,
 )
-from imxInsights.domain.imxFile import ImxFile
-from imxInsights.domain.imxGeographicLocation import ImxGeographicLocation
+from imxInsights.file.imxFile import ImxFile
 from imxInsights.utils.helpers import flatten_dict
 from imxInsights.utils.xml_helpers import (
     find_parent_entity,

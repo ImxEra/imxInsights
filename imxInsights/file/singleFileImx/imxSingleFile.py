@@ -4,7 +4,7 @@ from loguru import logger
 from lxml.etree import QName
 from lxml.etree import _Element as Element
 
-from imxInsights.domain.imxFile import ImxFile
+from imxInsights.file.imxFile import ImxFile
 from imxInsights.repo.imxRepo import ImxRepo
 
 

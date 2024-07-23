@@ -22,6 +22,20 @@ def test_imx_multiple_same_extension_objects_v124(imx_v124_project_instance: Imx
 
 
 @pytest.mark.slow
+def test_imx_repo_queries_v124(imx_v124_project_instance: ImxSingleFile):
+    imx = imx_v124_project_instance
+    assert len(list(imx.initial_situation.get_all())) == 5600, "Should have x objects"
+
+    types_in_repo = imx.initial_situation.get_types()
+    assert len(types_in_repo) == 60, "Should be x types"
+    assert len(imx.initial_situation.get_by_types(["Signal"])) == 166, "Should be x Signals"
+
+    paths_in_repo = imx.initial_situation.get_all_paths()
+    assert len(paths_in_repo) == 73, "Should be x paths"
+    assert len(imx.initial_situation.get_by_paths(["Signal.IlluminatedSign"])) == 34, "Should be x Signals.IlluminatedSign"
+
+
+@pytest.mark.slow
 def test_imx_parse_project_v500(imx_v500_project_instance):
     imx = imx_v500_project_instance
     assert imx.file.imx_version == "5.0.0", "imx version should be 5.0.0"

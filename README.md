@@ -20,11 +20,13 @@ Therefore, ProRail assumes no responsibility for the functionality, accuracy, or
 ***THE PUBLIC retains full ownership and responsibility for the codebase.*** 
 
 !!! danger "Warning!"  
+
     - The goal of `imxInsights` is to extract information from imx files. **Please note that modifying, 
     adding, deleting, or altering data is beyond the scope of this module**.
     - `imxInsights` explicit supports imx versions 1.2.4, 5.0.0 and all major versions up to and including version 12.0.0.
     
 !!! info "Audience"
+
     The intended audience for `imxInsights` consists of end users with basic Python knowledge. Therefore, the module offers a minimalistic API that is thoroughly documented. 
     We leverage the remarkable `makedocs` plugins to effortlessly generate a polished website from documentations and markdown files.
 
@@ -72,9 +74,9 @@ be continually updated until we reach the first stable version.
     - [ ] overlook reference documentation
     - [X] add examples to getting started
     - [X] change basic use
-    - [ ] add start of way of working
-    - [ ] fix custom css in right upper corner of docs pages
-    - [ ] fix dark and light thema logo inclusive github support (current only support github not mkdocs)
+    - [X] add start of way of working
+    - [X] fix custom css in right upper corner of docs pages
+    - [X] fix dark and light thema logo inclusive github support
 - [X] GitHub actions release as wheel
 - [X] min tests coverage 80%
 - [X] Logo design
@@ -87,13 +89,13 @@ be continually updated until we reach the first stable version.
 - [ ] clean git by fresh upload 🎉
 
 ####  Q3-2 2024 - MVP library release on PyPI
-- [ ] Ref as objects
 - [ ] Imx Diff
 - [ ] Imx Diff ignore Imx version difference
 - [ ] (Imx) Area's and area classifier
 - [ ] Pandas export
 - [ ] Geojson export
 - [ ] Excel output
+- [ ] Ref as objects
 - [ ] implement puic as a concept instead of passing keys to make clear what we use as a key.
 - [ ] RailConnectionInfos
 - [ ] TrackFragments
