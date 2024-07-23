@@ -1,7 +1,7 @@
 # imxInsights
 
-![](https://raw.githubusercontent.com/ImxEra/imxInsights/main/docs/assets/logo.svg#only-dark)
-![](https://raw.githubusercontent.com/ImxEra/imxInsights/main/docs/assets/logo-light.svg#only-light)
+![imxInsights logo](https://raw.githubusercontent.com/ImxEra/imxInsights/main/docs/assets/logo.svg#only-dark#gh-dark-mode-only)
+![imxInsights logo](https://raw.githubusercontent.com/ImxEra/imxInsights/main/docs/assets/logo-light.svg#only-light#gh-light-mode-only)
 
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/imxInsights)
 [![PyPI - Status](https://img.shields.io/pypi/status/imxInsights)](https://pypi.org/project/imxInsights/)
