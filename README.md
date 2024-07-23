@@ -1,10 +1,7 @@
 # imxInsights
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ImxEra/imxInsights/main/docs/assets/logo.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/ImxEra/imxInsights/main/docs/assets/logo-light.svg">
-  <img class="logo" alt="Logo" src="https://raw.githubusercontent.com/ImxEra/imxInsights/main/docs/assets/logo-light.svg">
-</picture>
 
+![](https://raw.githubusercontent.com/ImxEra/imxInsights/main/docs/assets/logo.svg#only-dark)
+![](https://raw.githubusercontent.com/ImxEra/imxInsights/main/docs/assets/logo-light.svg#only-light)
 
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/imxInsights)
 [![PyPI - Status](https://img.shields.io/pypi/status/imxInsights)](https://pypi.org/project/imxInsights/)
