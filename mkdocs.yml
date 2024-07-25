@@ -74,6 +74,15 @@ plugins:
                     - https://lxml.de/apidoc/objects.inv
                 options:
                     docstring_style: google
+                    members_order: source
+                    inherited_members: true
+                    show_source: false
+                    show_symbol_type_heading: true
+                    show_symbol_type_toc: true
+                    show_root_toc_entry: false
+#                    show_root_heading: false
+#                    show_root_members_full_path: false
+
 watch:
     - docs
     - imxInsights
@@ -86,8 +95,8 @@ nav:
         - Way of working: context/way_of_working.md
     - Reference:
         - ImxDomain:
-          - ContainerizedImx: reference/containerized_imx.md
           - SingleFileImx: reference/single_file_imx.md
+          - ContainerizedImx: reference/containerized_imx.md
           - ImxObject: reference/imx_object.md
           - ImxFile: reference/imx_file.md
         - ImxRepo:

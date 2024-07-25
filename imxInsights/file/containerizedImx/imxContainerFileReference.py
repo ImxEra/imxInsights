@@ -1,34 +1,37 @@
-from dataclasses import dataclass
-
 from lxml.etree import _Element as Element
 
 
-@dataclass
 class ImxContainerFileReference:
-    """
-    Represents a file reference.
+    """Represents a file reference."""
 
-    Attributes:
-        parentDocumentName (str): The name of the parent document.
-        parentHashcode (str): The hashcode of the parent document.
-    """
+    def __init__(self):
+        self._parent_document_name: str | None = None
+        self._parent_hashcode: str | None = None
 
-    parentDocumentName: str
-    parentHashcode: str
-
-    @staticmethod
-    def from_element(element: Element) -> "ImxContainerFileReference":
+    @property
+    def parent_document_name(self) -> str | None:
         """
-        Create a FileReference instance from an XML element.
-
-        Args:
-            element (ET.Element): The XML element containing the file reference data.
+        The name of the parent document.
 
         Returns:
-            ImxContainerFileReference: An instance of FileReference with data from the element.
+             The name of the reference file.
         """
+        return self._parent_document_name
 
-        return ImxContainerFileReference(
-            parentDocumentName=element.get("parentDocumentName", ""),
-            parentHashcode=element.get("parentHashcode", ""),
-        )
+    @property
+    def parent_hashcode(self) -> str | None:
+        """
+        The hashcode of the parent document.
+
+        Returns:
+             The hash of the reference file.
+        """
+        return self._parent_hashcode
+
+    @classmethod
+    def from_element(cls, element: Element) -> "ImxContainerFileReference":
+        self = cls()
+        self._parent_hashcode = element.get("parentHashcode", "")
+        self._parent_document_name = element.get("parentDocumentName", "")
+
+        return self

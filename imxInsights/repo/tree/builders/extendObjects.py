@@ -45,9 +45,14 @@ def extend_objects(
         extend = False
         imx_file_extension_obj = extension_object.imx_file
 
-        base_reference = getattr(imx_file_extension_obj, "base_reference", None)
-        parent_hashcode = getattr(base_reference, "parentHashcode", None)
+        # get hash
+        if hasattr(imx_file_extension_obj, "base_reference"):
+            base_reference = imx_file_extension_obj.base_reference
+        else:
+            base_reference = None
+        parent_hashcode = base_reference.parent_hashcode if base_reference else None
 
+        # determinate if extend
         if imx_file_extension_obj.file_hash == imx_object.imx_file.file_hash:
             extend = True
         elif parent_hashcode == imx_object.imx_file.file_hash:

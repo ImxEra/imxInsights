@@ -1,6 +1,6 @@
 import pytest
 
-from imxInsights import ImxSingleFile, ImxContainer
+from imxInsights import ImxContainer, ImxSingleFile
 
 
 @pytest.fixture(scope="module")

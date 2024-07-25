@@ -54,32 +54,16 @@ class ImxRepo:
                 zip_ref.extractall(temp_path)
             return temp_path
 
-    def get_build_exceptions(self) -> defaultdict[str, list[ImxException]]:
-        """
-        todo: make docs
-        """
-        return self._tree.build_extensions.exceptions
-
     def get_all(self) -> Iterable[ImxObject]:
         """
-        Retrieves all objects in the tree, ensuring no duplicates.
+        Retrieves all objects in the tree.
 
         Returns:
             Iterable[ImxObject]: An iterable of all ImxObjects.
 
-        Raises:
-            ImxDuplicatedPuicsInContainer: If duplicate PUICs are found.
         """
+
         return self._tree.get_all()
-
-    def get_keys(self) -> frozenset[str]:
-        """
-        Returns the set of keys currently in the tree dictionary.
-
-        Returns:
-            frozenset[str]: The set of keys in the tree dictionary.
-        """
-        return self._tree.keys
 
     def find(self, key: str | ImxObject) -> ImxObject | None:
         """
@@ -90,9 +74,6 @@ class ImxRepo:
 
         Returns:
             ImxObject | None: The found ImxObject, or None if not found.
-
-        Raises:
-            AssertionError: If multiple objects are found for the given key.
         """
         return self._tree.find(key)
 
@@ -137,3 +118,18 @@ class ImxRepo:
             list[ImxObject]: The list of matching ImxObjects.
         """
         return self._tree.get_by_path(object_paths)
+
+    def get_keys(self) -> list[str]:
+        """
+        Returns the set of keys currently in the tree dictionary.
+
+        Returns:
+            frozenset[str]: The set of keys in the tree dictionary.
+        """
+        return list(self._tree.keys)
+
+    def get_build_exceptions(self) -> defaultdict[str, list[ImxException]]:
+        """
+        todo: make docs
+        """
+        return self._tree.build_extensions.exceptions

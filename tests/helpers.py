@@ -1,7 +1,7 @@
+from collections.abc import Iterable
 from pathlib import Path
 from pkgutil import ModuleInfo, walk_packages
 from types import ModuleType
-from typing import Iterable
 
 
 def packages_in_module(m: ModuleType) -> Iterable[ModuleInfo]:

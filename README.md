@@ -86,6 +86,7 @@ be continually updated until we reach the first stable version.
     - [X] set up policies
     - [X] make public
     - [X] setup docs
+- [ ] Add ABC metaclass to make sure we keep the same api on single IMX file and container IMX
 - [ ] clean git by fresh upload 🎉
 
 ####  Q3-2 2024 - MVP library release on PyPI

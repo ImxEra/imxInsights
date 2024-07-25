@@ -15,10 +15,8 @@ from shapely import (
 from shapely.geometry import GeometryCollection
 
 from imxInsights.domain.imxGeographicLocation import ImxGeographicLocation
-from imxInsights.file.containerizedImx.imxContainerFile import (
-    ImxDesignCoreFile,
-    ImxDesignPetalFile,
-)
+from imxInsights.file.containerizedImx.imxDesignCoreFile import ImxDesignCoreFile
+from imxInsights.file.containerizedImx.imxDesignPetalFile import ImxDesignPetalFile
 from imxInsights.file.imxFile import ImxFile
 from imxInsights.utils.helpers import flatten_dict
 from imxInsights.utils.xml_helpers import (

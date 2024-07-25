@@ -2,7 +2,7 @@ from pathlib import Path
 
 from loguru import logger
 
-from imxInsights.file.containerizedImx.imxContainerFile import ImxContainerFiles
+from imxInsights.file.containerizedImx.imxContainerFiles import ImxContainerFiles
 from imxInsights.file.containerizedImx.imxContainerMetadata import (
     ImxContainerMetadata,
 )
@@ -15,7 +15,6 @@ class ImxContainer(ImxRepo):
 
     Args:
         imx_file_path: Path to the IMX container.
-
 
     Attributes:
         files: The IMX files inside the container
@@ -39,18 +38,12 @@ class ImxContainer(ImxRepo):
         logger.success(f"finished processing {Path(imx_file_path).name}")
 
     def _populate_project_metadata(self):
-        """
-        Populate project metadata from the signaling design file.
-        """
         if self.files.signaling_design is not None:
             self.project_metadata = ImxContainerMetadata.from_element(
                 self.files.signaling_design.root
             )
 
     def _populate_tree(self):
-        """
-        Populate the tree with IMX files.
-        """
         if self.files.signaling_design is not None:
             self._tree.add_imx_file(self.files.signaling_design, self.container_id)
 
