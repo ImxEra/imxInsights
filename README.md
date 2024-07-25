@@ -56,6 +56,7 @@ be continually updated until we reach the first stable version.
 - [X] Setup mkdocs
 - [X] create pre commit formatting and type checking
 - [X] Imx single file 
+- [ ] Imx single file metadata
 - [X] Imx zip container 
 - [X] Imx container metadata
 - [X] mkdocs for end user, we should commit to published api stuff not internals
@@ -87,16 +88,17 @@ be continually updated until we reach the first stable version.
     - [X] make public
     - [X] setup docs
 - [ ] Add ABC metaclass to make sure we keep the same api on single IMX file and container IMX
+- [ ] Pandas export
+- [ ] Geojson export
 - [ ] clean git by fresh upload 🎉
 
 ####  Q3-2 2024 - MVP library release on PyPI
 - [ ] Imx Diff
 - [ ] Imx Diff ignore Imx version difference
 - [ ] (Imx) Area's and area classifier
-- [ ] Pandas export
-- [ ] Geojson export
 - [ ] Excel output
 - [ ] Ref as objects
+- [ ] Excel diff color dataframe and excel
 - [ ] implement puic as a concept instead of passing keys to make clear what we use as a key.
 - [ ] RailConnectionInfos
 - [ ] TrackFragments
@@ -104,7 +106,7 @@ be continually updated until we reach the first stable version.
 
 
 #### Backlog current features implementation
-- [ ] Imx single file metadata
+
 - [ ] Add Situation changes
 - [ ] nice ref display
 - [ ] parent path display
