@@ -34,6 +34,8 @@ def test_imx_repo_queries_v124(imx_v124_project_instance: ImxSingleFile):
     assert len(paths_in_repo) == 73, "Should be x paths"
     assert len(imx.initial_situation.get_by_paths(["Signal.IlluminatedSign"])) == 34, "Should be x Signals.IlluminatedSign"
 
+    assert len(imx.initial_situation.get_pandas_df("Signal")) == 166, "Should be x Signals"
+
 
 @pytest.mark.slow
 def test_imx_parse_project_v500(imx_v500_project_instance):
@@ -61,4 +63,3 @@ def test_imx_parse_v1200_dir(imx_v1200_dir_instance):
     assert len(list(imx.get_all())) == 302, "objects in tree should is off"
     # dir has one more extension course of mismatch on file hash for observations
     assert len(imx.get_build_exceptions()) == 7, "should have x exceptions"
-

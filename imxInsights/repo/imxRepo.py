@@ -5,6 +5,8 @@ from collections import defaultdict
 from collections.abc import Iterable
 from pathlib import Path
 
+import pandas as pd
+
 from imxInsights.domain.imxObject import ImxObject
 from imxInsights.exceptions import ImxException
 from imxInsights.repo.tree.imxObjectTree import ObjectTree
@@ -133,3 +135,66 @@ class ImxRepo:
         todo: make docs
         """
         return self._tree.build_extensions.exceptions
+
+    def get_pandas_df(
+        self, object_type_or_path: str | None = None, puic_as_index=True
+    ) -> pd.DataFrame:
+        """
+        Get Pandas dataframe of one value object type or limited view of all objects.
+
+        When using an object type or path, all properties will be flattened. When getting a dataframe of all objects,
+        most attributes will be stripped except for some metadata. In both cases, it will include parent puic,
+        path.
+
+        Args:
+            object_type_or_path: path or imx type to get df of
+            puic_as_index: if true puic value will be the index
+
+        Returns:
+            pd.DataFrame: pandas dataframe of the object properties
+        """
+
+        def extract_overview_properties(item, props_in_overview=None):
+            props = (
+                item.properties
+                if props_in_overview is None
+                else {
+                    key: value
+                    for key, value in item.properties.items()
+                    if key in props_in_overview
+                }
+            )
+            return {
+                "puic": item.puic,
+                "path": item.path,
+                "parent": item.parent.puic if item.parent is not None else "",
+                "name": item.name,
+            } | props
+
+        if object_type_or_path is None:
+            props_in_overview = [
+                "Location.GeographicLocation.@accuracy",
+                "Location.GeographicLocation.@dataAcquisitionMethod",
+                "Metadata.@isInService",
+                "Metadata.@lifeCycleStatus",
+                "Metadata.@source",
+            ]
+            records = [
+                extract_overview_properties(item, props_in_overview)
+                for item in self.get_all()
+            ]
+
+        else:
+            if "." in object_type_or_path:
+                value_objects = self.get_by_paths([object_type_or_path])
+            else:
+                value_objects = self.get_by_types([object_type_or_path])
+
+            records = [extract_overview_properties(item) for item in value_objects]
+
+        df = pd.DataFrame.from_records(records)
+        if not df.empty and puic_as_index:
+            df.set_index("puic", inplace=True)
+            df.fillna("", inplace=True)
+
+        return df

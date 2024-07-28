@@ -71,7 +71,7 @@ be continually updated until we reach the first stable version.
 - [ ] Documentation update
     - [X] add and fix urls
     - [X] installation, add wheel till pipy release
-    - [ ] overlook code and refactor if needed
+    - [X] overlook code and refactor if needed
     - [ ] overlook reference documentation
     - [X] add examples to getting started
     - [X] change basic use
@@ -88,8 +88,7 @@ be continually updated until we reach the first stable version.
     - [X] make public
     - [X] setup docs
 - [ ] Add ABC metaclass to make sure we keep the same api on single IMX file and container IMX
-- [ ] Pandas export
-- [ ] Geojson export
+- [X] Pandas export
 - [ ] clean git by fresh upload 🎉
 
 ####  Q3-2 2024 - MVP library release on PyPI
@@ -97,6 +96,7 @@ be continually updated until we reach the first stable version.
 - [ ] Imx Diff ignore Imx version difference
 - [ ] (Imx) Area's and area classifier
 - [ ] Excel output
+- [ ] Geojson export
 - [ ] Ref as objects
 - [ ] Excel diff color dataframe and excel
 - [ ] implement puic as a concept instead of passing keys to make clear what we use as a key.
