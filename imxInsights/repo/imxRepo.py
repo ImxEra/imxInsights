@@ -198,3 +198,25 @@ class ImxRepo:
             df.fillna("", inplace=True)
 
         return df
+
+    def get_pandas_df_dict(
+        self, key_based_on_type: bool = False
+    ) -> dict[str, pd.DataFrame]:
+        """
+        Get a dictionary of Pandas dataframe of all type bases on keys or path.
+
+        Args:
+            key_based_on_type: if true key based on type, else on path
+
+        Returns: dictionary of pandas dataframe
+
+        """
+        out_dict = {}
+        if key_based_on_type:
+            for imx_type in self.get_types():
+                out_dict[imx_type] = self.get_pandas_df(imx_type)
+
+        for imx_path in self.get_all_paths():
+            out_dict[imx_path] = self.get_pandas_df(imx_path)
+
+        return out_dict

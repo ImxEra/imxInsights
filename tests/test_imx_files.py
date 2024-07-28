@@ -1,6 +1,6 @@
 import pytest
 
-from imxInsights import ImxSingleFile
+from imxInsights import ImxSingleFile, ImxMultiRepo
 
 
 @pytest.mark.slow
@@ -35,6 +35,7 @@ def test_imx_repo_queries_v124(imx_v124_project_instance: ImxSingleFile):
     assert len(imx.initial_situation.get_by_paths(["Signal.IlluminatedSign"])) == 34, "Should be x Signals.IlluminatedSign"
 
     assert len(imx.initial_situation.get_pandas_df("Signal")) == 166, "Should be x Signals"
+    assert len(imx.initial_situation.get_pandas_df_dict()) == 73, "Should be x Objects"
 
 
 @pytest.mark.slow
