@@ -68,11 +68,11 @@ be continually updated until we reach the first stable version.
 - [X] Add test and fixtures for supported Imx versions,
 - [X] Refactor and shadow tree methods
 - [X] Reverse merge extension props make methode to get them 
-- [ ] Documentation update
+- [X] Documentation update
     - [X] add and fix urls
     - [X] installation, add wheel till pipy release
     - [X] overlook code and refactor if needed
-    - [ ] overlook reference documentation
+    - [X] overlook reference documentation
     - [X] add examples to getting started
     - [X] change basic use
     - [X] add start of way of working

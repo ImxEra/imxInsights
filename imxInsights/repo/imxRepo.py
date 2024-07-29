@@ -30,7 +30,7 @@ class ImxRepo:
         # todo: imx_file_path should be only Path
         self.container_id: str = str(uuid.uuid4())
         self._tree: ObjectTree = ObjectTree()
-
+        self.imx_version: str | None = None
         if zipfile.is_zipfile(imx_file_path):
             imx_file_path = self._parse_zip_container(imx_file_path)
         elif isinstance(imx_file_path, str):

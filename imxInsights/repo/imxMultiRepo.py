@@ -11,14 +11,18 @@ class ImxMultiRepo:
     Represents a collection of ImxContainers.
 
     Attributes:
-        containers (list[ImxContainerFile]): A list of ImxContainers.
-        tree (MultiObjectTree): An ObjectTree representing the merged structure of all containers.
+        containers: A list of ImxContainers.
+        tree: An ObjectTree representing the merged structure of all containers.
     """
 
     def __init__(self, containers: list[ImxRepo], version_safe: bool = True):
         if version_safe:
-            # todo: check if all container are the same version
-            pass
+            versions = [item.imx_version for item in containers]
+            if not all(x == versions[0] for x in versions):
+                # todo: make IMX error
+                raise ValueError(  # noqa TRY003
+                    "Containers should have same imx version, use version_safe to explicit ignore versions"
+                )
 
         # this will copy the element not the references
         containers = deepcopy(containers)
@@ -121,6 +125,8 @@ class ImxMultiRepo:
             out.append(merged_dict)
         return out
 
+    # todo: make diff imx object
+    # todo: make diff attr attribute
     @staticmethod
     def _merge_changes_with_container_ids(values, container_step_mapping):
         result = []
@@ -138,6 +144,7 @@ class ImxMultiRepo:
         return " | ".join(result)
 
     def get_change_timeline(self, container_step_mapping: dict):
+        # todo: detect a change, if so set status on object.
         input_dicts = self._create_change_over_container_mapping()
         out = []
         for imx_object in input_dicts:

@@ -26,7 +26,7 @@ class ImxSituation(ImxRepo):
     ):
         super().__init__(imx_file_path)
         logger.info(f"processing {QName(situation_element.tag).localname}")
-        # todo: make enum for imx type
+        self.imx_version = imx_file.imx_version
         self.situation_type: ImxSituationEnum = ImxSituationEnum[
             situation_element.tag.split("}")[-1]
         ]

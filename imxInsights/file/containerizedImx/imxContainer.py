@@ -31,7 +31,11 @@ class ImxContainer(ImxRepo):
         self.files: ImxContainerFiles = ImxContainerFiles.from_container(
             container_path=self.path, container_id=self.container_id
         )
-
+        self.imx_version = (
+            self.files.signaling_design.imx_version
+            if self.files.signaling_design
+            else None
+        )
         self._populate_project_metadata()
         self._populate_tree()
         self._tree.build_extensions.handle_all()

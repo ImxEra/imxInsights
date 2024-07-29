@@ -39,6 +39,26 @@ def test_imx_repo_queries_v124(imx_v124_project_instance: ImxSingleFile):
 
 
 @pytest.mark.slow
+def test_imx_multi_repo_v124(imx_v124_project_instance: ImxSingleFile, imx_v500_project_instance: ImxSingleFile):
+    imx = imx_v124_project_instance
+    imx_2 = imx_v500_project_instance
+    multi_situations = ImxMultiRepo(
+        [imx.initial_situation, imx.new_situation, imx_2.initial_situation],
+        version_safe=False
+    )
+
+    container_step_mapping = {
+        imx.initial_situation.container_id: "init",
+        imx.new_situation.container_id: "new",
+        imx_2.initial_situation.container_id: "init500"
+    }
+    tester = multi_situations.get_change_timeline(container_step_mapping)
+
+    print()
+
+
+
+@pytest.mark.slow
 def test_imx_parse_project_v500(imx_v500_project_instance):
     imx = imx_v500_project_instance
     assert imx.file.imx_version == "5.0.0", "imx version should be 5.0.0"
