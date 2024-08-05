@@ -1,6 +1,6 @@
 from collections.abc import Callable, Iterable
 
-from imxInsights.domain.imxObject import ImxObject
+from imxInsights.domain.imxObject_old import ImxObject
 from imxInsights.repo.tree.buildExceptions import BuildExceptions
 
 

@@ -47,7 +47,7 @@ be continually updated until we reach the first stable version.
 ### Roadmap
 
 #### Q3-1 2024 - init public release on github
-![](https://progress-bar.dev/90?title=progresses)
+![](https://progress-bar.dev/98?title=progresses)
 
 - [X] Imx Container POC to init project
 - [X] Imx 1.2.4 5.0.0 and 12.0.0 file import
@@ -56,9 +56,7 @@ be continually updated until we reach the first stable version.
 - [X] Setup mkdocs
 - [X] create pre commit formatting and type checking
 - [X] Imx single file 
-- [ ] Imx single file metadata
-- [X] Imx zip container 
-- [X] Imx container metadata
+- [X] Imx zip container
 - [X] mkdocs for end user, we should commit to published api stuff not internals
 - [X] ImxCustomException and handler
 - [X] ImxExtension objects
@@ -69,51 +67,42 @@ be continually updated until we reach the first stable version.
 - [X] Refactor and shadow tree methods
 - [X] Reverse merge extension props make methode to get them 
 - [X] Documentation update
-    - [X] add and fix urls
-    - [X] installation, add wheel till pipy release
-    - [X] overlook code and refactor if needed
-    - [X] overlook reference documentation
-    - [X] add examples to getting started
-    - [X] change basic use
-    - [X] add start of way of working
-    - [X] fix custom css in right upper corner of docs pages
-    - [X] fix dark and light thema logo inclusive github support
 - [X] GitHub actions release as wheel
 - [X] min tests coverage 80%
 - [X] Logo design
 - [X] Setup repo policy including GitHub Actions
-    - [X] create workflow documentation
-    - [X] create workflow build
-    - [X] set up policies
-    - [X] make public
-    - [X] setup docs
-- [ ] Add ABC metaclass to make sure we keep the same api on single IMX file and container IMX
-- [X] Pandas export
-- [ ] clean git by fresh upload 🎉
+- [X] Imx data as Pandas dataframe
+
 
 ####  Q3-2 2024 - MVP library release on PyPI
 - [ ] Imx Diff
 - [ ] Imx Diff ignore Imx version difference
-- [ ] (Imx) Area's and area classifier
 - [ ] Excel output
-- [ ] Geojson export
-- [ ] Ref as objects
-- [ ] Excel diff color dataframe and excel
-- [ ] implement puic as a concept instead of passing keys to make clear what we use as a key.
-- [ ] RailConnectionInfos
-- [ ] TrackFragments
+- [ ] Imx data as Geojson
+- [ ] Imx container metadata
+- [ ] Imx single file metadata
+- [ ] clean git by fresh upload 🎉
 - [ ] GitHub actions release on pypi
 
 
-#### Backlog current features implementation
-
-- [ ] Add Situation changes
+####  Q4-1 2024 
+- [ ] (Imx) Area's and area classifier
+- [ ] Excel diff color dataframe and excel
+- [ ] Ref as objects
 - [ ] nice ref display
 - [ ] parent path display
 - [ ] km by linear referencing
+- [ ] RailConnectionInfos class
+- [ ] TrackFragments support
+- [ ] implement puic as a concept instead of passing keys to make clear what we use as a key.
+
+
+#### Backlog current features implementation
+- [ ] Situation changes support (read and check)
 - [ ] graph implementation
 - [ ] generate graph geometry
 - [ ] graph end user api
+- [ ] advanced geometry view
 - [ ] 3d Measure calculator
 - [ ] Imx 1.0-RC release on pypi
 

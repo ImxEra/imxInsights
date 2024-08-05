@@ -21,4 +21,3 @@ object_types = imx.new_situation.get_types()
 
 # get by type
 object_subset = imx.new_situation.get_by_types([object_types[0], imx_object.tag])
-

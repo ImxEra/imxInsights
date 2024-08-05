@@ -1,7 +1,7 @@
 from collections import defaultdict
 from collections.abc import Callable
 
-from imxInsights.domain.imxObject import ImxObject
+from imxInsights.domain.imxObject_old import ImxObject
 
 
 def add_children(

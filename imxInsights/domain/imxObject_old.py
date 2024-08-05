@@ -37,7 +37,8 @@ class ImxObject:
         manipulate and query the object.
 
     Todo:
-        Find way to make immutable after building repo.
+        = Find way to make immutable after building repo.
+        - Move back to repo, specific types like trackassets should be in domain.
 
     Args:
         element: The XML element representing the object.

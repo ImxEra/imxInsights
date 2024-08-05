@@ -1,9 +1,8 @@
 from copy import deepcopy
 
+from imxInsights.compair.compairMultiRepo import ImxCompareMultiRepo
 from imxInsights.repo.imxRepo import ImxRepo
 from imxInsights.repo.tree.imxMultiObjectTree import MultiObjectTree
-
-# todo: make sure merged is a deep deep copy of init
 
 
 class ImxMultiRepo:
@@ -27,9 +26,9 @@ class ImxMultiRepo:
         # this will copy the element not the references
         containers = deepcopy(containers)
         self.containers = [item for item in containers]
-        self.container_order: list[str] = [
-            item.container_id for item in self.containers
-        ]
+        self.container_order: tuple[str, ...] = tuple(
+            [item.container_id for item in self.containers]
+        )
         self.tree = MultiObjectTree()
         self._merge_containers(self.containers)
 
@@ -107,52 +106,5 @@ class ImxMultiRepo:
             self.tree.build_extensions.exceptions,
         )
 
-    def _create_change_over_container_mapping(self):
-        out = []
-        for imx_obj in self.tree.get_all():
-            merged_dict: dict = {}
-            all_keys: set = set()
-            for d in imx_obj:
-                all_keys.update(d.properties.keys())
-
-            for key in all_keys:
-                merged_dict[key] = []
-                for d in imx_obj:
-                    merged_dict[key].append({d.container_id: d.properties.get(key)})
-
-            tag_list = [{item.container_id: item.path} for item in imx_obj]
-            merged_dict["tags"] = tag_list
-            out.append(merged_dict)
-        return out
-
-    # todo: make diff imx object
-    # todo: make diff attr attribute
-    @staticmethod
-    def _merge_changes_with_container_ids(values, container_step_mapping):
-        result = []
-        previous_value = None
-        for entry in values:
-            for container_id, value in entry.items():
-                if value != previous_value:
-                    if previous_value is not None:
-                        result.append(
-                            f"{container_step_mapping[container_id]}-> {value}"
-                        )
-                    else:
-                        result.append(f"{value}")
-                    previous_value = value
-        return " | ".join(result)
-
-    def get_change_timeline(self, container_step_mapping: dict):
-        # todo: detect a change, if so set status on object.
-        input_dicts = self._create_change_over_container_mapping()
-        out = []
-        for imx_object in input_dicts:
-            merged_dict = {}
-            for key, value in imx_object.items():
-                merged_dict[key] = self._merge_changes_with_container_ids(
-                    value, container_step_mapping
-                )
-            sorted_dict = {key: merged_dict[key] for key in sorted(merged_dict)}
-            out.append(sorted_dict)
-        return out
+    def compair(self):
+        return ImxCompareMultiRepo.from_multi_repo(self.tree, self.container_order)

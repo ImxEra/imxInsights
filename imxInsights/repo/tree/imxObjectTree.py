@@ -4,7 +4,7 @@ from itertools import chain
 
 from lxml.etree import _Element as Element
 
-from imxInsights.domain.imxObject import ImxObject
+from imxInsights.domain.imxObject_old import ImxObject
 from imxInsights.exceptions.imxExceptions import ImxDuplicatedPuicsInContainer
 from imxInsights.file.imxFile import ImxFile
 from imxInsights.repo.tree.builders.addChildren import add_children

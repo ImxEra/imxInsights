@@ -3,7 +3,7 @@ from collections.abc import Callable
 from shapely.geometry import LineString, MultiLineString, Point
 from shapely.ops import linemerge
 
-from imxInsights.domain.imxObject import ImxObject
+from imxInsights.domain.imxObject_old import ImxObject
 from imxInsights.exceptions.imxExceptions import ImxRailConnectionRefNotPresent
 from imxInsights.repo.tree.buildExceptions import BuildExceptions
 from imxInsights.utils.shapley_helpers import reverse_line
