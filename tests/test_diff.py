@@ -83,5 +83,5 @@ test_data_fields = {
 }
 
 tester = ImxComparedObject(test_data_fields, test_data_container_order_dict)
-tester_df = tester.as_pandas_df()
+# tester_df = tester.as_pandas_df()
 print()

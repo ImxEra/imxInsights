@@ -4,6 +4,13 @@ from imxInsights.compair.compairObject import ImxComparedObject
 
 
 class ImxCompareMultiRepo:
+    """
+    A class to handle multi-repository comparisons of IMX objects.
+
+    Attributes:
+        values (dict[str, ImxComparedObject]): A dictionary holding compared objects.
+    """
+
     def __init__(self):
         self.values: dict[str, ImxComparedObject] = {}
 

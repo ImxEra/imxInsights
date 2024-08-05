@@ -1,0 +1,3 @@
+# Reference
+
+::: imxInsights.compair.compairStatusEnum

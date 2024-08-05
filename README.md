@@ -48,39 +48,33 @@ be continually updated until we reach the first stable version.
 
 #### Q3-1 2024 - init public release on github
 ![](https://progress-bar.dev/98?title=progresses)
-
 - [X] Imx Container POC to init project
 - [X] Imx 1.2.4 5.0.0 and 12.0.0 file import
 - [X] Imx Config Class
-- [X] Add typehints fix mypy
-- [X] Setup mkdocs
-- [X] create pre commit formatting and type checking
+- [X] ImxExtension objects
 - [X] Imx single file 
 - [X] Imx zip container
-- [X] mkdocs for end user, we should commit to published api stuff not internals
 - [X] ImxCustomException and handler
-- [X] ImxExtension objects
 - [X] GML shapley geometry
 - [X] RailConnection shapley geometry
 - [X] Known parent and children
-- [X] Add test and fixtures for supported Imx versions,
-- [X] Refactor and shadow tree methods
-- [X] Reverse merge extension props make methode to get them 
-- [X] Documentation update
-- [X] GitHub actions release as wheel
-- [X] min tests coverage 80%
-- [X] Logo design
-- [X] Setup repo policy including GitHub Actions
 - [X] Imx data as Pandas dataframe
 
 
 ####  Q3-2 2024 - MVP library release on PyPI
-- [ ] Imx Diff
-- [ ] Imx Diff ignore Imx version difference
+- [X] Imx Compair imx version ignore
+- [X] Imx Compair Object
+- [ ] Compair object metadata overview
+- [ ] Compair object type between 2 versions 
+- [ ] Compair object type as timeline
+- [ ] Compair as pandas dataframe
 - [ ] Excel output
-- [ ] Imx data as Geojson
 - [ ] Imx container metadata
 - [ ] Imx single file metadata
+- [ ] Imx data as Geojson
+- [ ] Compair as geojson
+- [ ] Documentation update
+- [ ] min tests coverage 95%
 - [ ] clean git by fresh upload 🎉
 - [ ] GitHub actions release on pypi
 

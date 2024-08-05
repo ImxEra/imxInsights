@@ -94,19 +94,24 @@ nav:
         - Basic use: examples/basic_use.md
         - Way of working: context/way_of_working.md
     - Reference:
-        - ImxDomain:
+        - Imx:
           - SingleFileImx: reference/single_file_imx.md
           - ContainerizedImx: reference/containerized_imx.md
-          - ImxObject: reference/imx_object.md
+          - Domain objects:
+              - ImxObject: reference/imx_object.md
+              - TrackAsset: reference/todo.md
+              - RailConnection: reference/todo.md
+              - Groupings: reference/todo.md
           - ImxFile: reference/imx_file.md
         - ImxRepo:
             - ImxRepo: reference/repo/imx_repo.md
-            - ImxMultiRepo: reference/repo/multi_repo.md
             - RepoConfig: reference/repo/config.md
             - RepoBuilders: reference/repo/repo_builders.md
             - BuildExceptions: reference/repo/repo_exceptions.md
+            - ImxMultiRepo: reference/repo/imx_multi_repo.md
         - ImxCompair:
-            - ImxCompair: reference/repo/imx_compair.md
+            - ImxCompair: reference/compair/imx_compair.md
+            - CompairStatusEnum: reference/compair/imx_compair_enum.md
         - Exceptions:
            - Custom Exceptions: reference/exceptions/exceptions.md
            - Exception Handler: reference/exceptions/exceptions_handler.md

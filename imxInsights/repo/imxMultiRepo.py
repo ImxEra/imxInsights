@@ -12,6 +12,13 @@ class ImxMultiRepo:
     Attributes:
         containers: A list of ImxContainers.
         tree: An ObjectTree representing the merged structure of all containers.
+
+    Args:
+        containers: A list of ImxContainers.
+        version_safe: If True, ensures all containers have the same IMX version.
+
+    Raises:
+        ValueError: If version_safe is True and containers have different IMX versions.
     """
 
     def __init__(self, containers: list[ImxRepo], version_safe: bool = True):
@@ -25,11 +32,11 @@ class ImxMultiRepo:
 
         # this will copy the element not the references
         containers = deepcopy(containers)
-        self.containers = [item for item in containers]
+        self.containers: list[ImxRepo] = [item for item in containers]
         self.container_order: tuple[str, ...] = tuple(
             [item.container_id for item in self.containers]
         )
-        self.tree = MultiObjectTree()
+        self.tree: MultiObjectTree = MultiObjectTree()
         self._merge_containers(self.containers)
 
     @staticmethod
@@ -106,5 +113,10 @@ class ImxMultiRepo:
             self.tree.build_extensions.exceptions,
         )
 
-    def compair(self):
+    def compair(self) -> ImxCompareMultiRepo:
+        """Returns the compair of the repository
+
+        returns:
+            A ImxCompareMultiRepo object
+        """
         return ImxCompareMultiRepo.from_multi_repo(self.tree, self.container_order)

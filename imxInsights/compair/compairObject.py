@@ -1,18 +1,15 @@
 from typing import Any, cast
 
-import pandas as pd
-
 from imxInsights.compair.compairField import ImxFieldCompair
 from imxInsights.compair.compairStatusEnum import (
     CompairStatus,
     check_status_changed_deleted_or_created,
 )
 
+# import pandas as pd
+
 
 def highlight_changes(value):
-    """
-    Highlight values in a DataFrame based on change state.
-    """
     color = ""
     if value == CompairStatus.NOT_PRESENT:
         color = "color: azure;"
@@ -28,15 +25,20 @@ def highlight_changes(value):
     return color
 
 
-def apply_highlight(s):
-    return [highlight_changes(val) for val in s]
-
-
-def align_left_index(s):
-    return ["text-align: left;" if s.name == "" else "" for _ in s]
-
-
 class ImxComparedObject:
+    """
+    Represents a compared object with fields and statuses.
+
+    Attributes:
+        fields: A list of ImxFieldCompair objects representing the fields.
+        global_status: The global status of the compared object.
+        container_status: The status of each container.
+
+    Args:
+        diff_data_dict: A dictionary containing the diff data.
+        container_order: The order of containers, if tuple of dict the dict represents {'id': 'alias'}.
+    """
+
     def __init__(
         self,
         diff_data_dict: dict[str, list[tuple[str, Any]]],
@@ -79,6 +81,12 @@ class ImxComparedObject:
 
     @property
     def container_aliases(self) -> dict[str, str]:
+        """
+        Get the container aliases as a dict key=order, value is alias.
+
+        Returns:
+            A dictionary mapping container order to their aliases.
+        """
         return dict(zip(self._container_order, self._container_aliases))
 
     def _set_compair_fields(self):
@@ -103,62 +111,78 @@ class ImxComparedObject:
             for idx, value in enumerate(container_status_list.items())
         )
 
-    def as_pandas_df(self):
-        # columns = self._container_order
+    # def apply_highlight(s):
+    #     return [highlight_changes(val) for val in s]
 
-        _: dict = {}
-        _2: dict = {}
-        for item in self.fields:
-            _[item.name] = {}
-            _2[item.name] = {}
-            for item2 in item.values:
-                _[item.name][item2.container_id] = item2.value
-                _2[item.name][item2.container_id] = item2.status
-        # df_values = pd.DataFrame.from_dict(_, orient="index")
-        # df_changes = pd.DataFrame.from_dict(_2, orient="index")
-        # styled_df = df_values.style.apply(
-        #     lambda x: df_changes.applymap(highlight_changes), axis=None
-        # )
-        #
-        # styled_df = df_values.style.apply(apply_highlight, axis=None)
+    # def align_left_index(s):
+    #     return ["text-align: left;" if s.name == "" else "" for _ in s]
 
-        df_values = pd.DataFrame.from_dict(_, orient="index")
-        df_changes = pd.DataFrame.from_dict(_2, orient="index")
-        styled_df = df_values.style.apply(
-            lambda x: df_changes.applymap(highlight_changes),  # type: ignore
-            axis=None,  # type: ignore
-        )
-
-        styled_df.set_table_styles(
-            [
-                {"selector": ".row_heading", "props": [("text-align", "left")]},
-                {"selector": "td", "props": [("font-family", "Roboto")]},
-            ]
-        )
-
-        html_table = styled_df.to_html()
-        custom_css = """
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-        <style>
-            table {
-                font-family: 'Roboto', sans-serif;
-                font-size: 14px;
-                border-collapse: collapse;
-                width: 100%;
-            }
-            table, th, td {
-                border: 1px solid black;
-            }
-            th, td {
-                padding: 8px;
-                text-align: left;
-            }
-        </style>
-        """
-        html_content = custom_css + html_table
-        with open("styled_dataframe.html", "w") as f:
-            f.write(html_content)
-
-        # https://devsnap.me/css-tables
-
-        print()
+    # def as_pandas_df(self):
+    #     """
+    #     Convert the compared object to a pandas DataFrame with styled HTML output.
+    #
+    #     !!! Warning
+    #         In development!
+    #
+    #     Returns:
+    #         None
+    #     """
+    #
+    #     # columns = self._container_order
+    #
+    #     _: dict = {}
+    #     _2: dict = {}
+    #     for item in self.fields:
+    #         _[item.name] = {}
+    #         _2[item.name] = {}
+    #         for item2 in item.values:
+    #             _[item.name][item2.container_id] = item2.value
+    #             _2[item.name][item2.container_id] = item2.status
+    #     # df_values = pd.DataFrame.from_dict(_, orient="index")
+    #     # df_changes = pd.DataFrame.from_dict(_2, orient="index")
+    #     # styled_df = df_values.style.apply(
+    #     #     lambda x: df_changes.applymap(highlight_changes), axis=None
+    #     # )
+    #     #
+    #     # styled_df = df_values.style.apply(apply_highlight, axis=None)
+    #
+    #     df_values = pd.DataFrame.from_dict(_, orient="index")
+    #     df_changes = pd.DataFrame.from_dict(_2, orient="index")
+    #     styled_df = df_values.style.apply(
+    #         lambda x: df_changes.applymap(highlight_changes),  # type: ignore
+    #         axis=None,  # type: ignore
+    #     )
+    #
+    #     styled_df.set_table_styles(
+    #         [
+    #             {"selector": ".row_heading", "props": [("text-align", "left")]},
+    #             {"selector": "td", "props": [("font-family", "Roboto")]},
+    #         ]
+    #     )
+    #
+    #     html_table = styled_df.to_html()
+    #     custom_css = """
+    #     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    #     <style>
+    #         table {
+    #             font-family: 'Roboto', sans-serif;
+    #             font-size: 14px;
+    #             border-collapse: collapse;
+    #             width: 100%;
+    #         }
+    #         table, th, td {
+    #             border: 1px solid black;
+    #         }
+    #         th, td {
+    #             padding: 8px;
+    #             text-align: left;
+    #         }
+    #     </style>
+    #     """
+    #     html_content = custom_css + html_table
+    #     with open("styled_dataframe.html", "w") as f:
+    #         f.write(html_content)
+    #
+    #     # https://devsnap.me/css-tables
+    #
+    #     print()

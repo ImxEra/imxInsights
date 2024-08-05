@@ -121,6 +121,7 @@ class Imx500ExtensionMapping:
         ErtmsSignal: Default is ```["@signalRef"]```.
         ErtmsBaliseGroup: Default is ```["@baliseGroupRef"]```.
         ErtmsRoute: Default is ```["@signalingRouteRef"]```.
+        FlankProtectionConfiguration: Default ```[@switchMechanismRef, @position]```.
     """
 
     MicroNode: list[str] = field(default_factory=lambda: ["@junctionRef"])

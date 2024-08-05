@@ -7,14 +7,20 @@ from imxInsights.compair.compairStatusEnum import (
 )
 
 
-@dataclass
-class ImxFieldCompairValue:
-    container_id: str
-    value: Any
-    status: CompairStatus = field(init=False)
-
-
 class ImxFieldCompair:
+    """
+    Represents a comparison field with a set of values across containers.
+
+    Attributes:
+        name (str): The name of the field.
+        values (list[ImxFieldCompairValue]): A list of values within the field.
+        global_status (CompairStatus): The overall status of the field.
+
+    Args:
+        name (str): The name of the field.
+        values (list[tuple[str, Any]]): A list of tuples containing container IDs and their corresponding values.
+    """
+
     def __init__(self, name: str, values: list[tuple[str, Any]]):
         self.name: str = name
         self.values: list[ImxFieldCompairValue] = [
@@ -50,3 +56,19 @@ class ImxFieldCompair:
         self.global_status = check_status_changed_deleted_or_created(
             [item.status for item in self.values]
         )
+
+
+@dataclass
+class ImxFieldCompairValue:
+    """
+    Represents a value within a container, including its status.
+
+    Attributes:
+        container_id (str): The identifier for the container.
+        value (Any): The value within the container.
+        status (CompairStatus): The status of the value, determined after initialization.
+    """
+
+    container_id: str
+    value: Any
+    status: CompairStatus = field(init=False)
