@@ -137,7 +137,7 @@ class ImxRepo:
         return self._tree.build_extensions.exceptions
 
     def get_pandas_df(
-        self, object_type_or_path: str | None = None, puic_as_index=True
+        self, object_type_or_path: str | None = None, puic_as_index: bool = True
     ) -> pd.DataFrame:
         """
         Get Pandas dataframe of one value object type or limited view of all objects.
