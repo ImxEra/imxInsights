@@ -48,6 +48,7 @@ be continually updated until we reach the first stable version.
 
 #### Q3-1 2024 - init public release on github
 ![](https://progress-bar.dev/98?title=progresses)
+
 - [X] Imx Container POC to init project
 - [X] Imx 1.2.4 5.0.0 and 12.0.0 file import
 - [X] Imx Config Class
