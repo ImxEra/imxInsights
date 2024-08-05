@@ -2,7 +2,7 @@ from collections import defaultdict
 
 from lxml.etree import _Element as Element
 
-from imxInsights.domain.imxObject_old import ImxObject
+from imxInsights.domain.imxObject import ImxObject
 from imxInsights.exceptions import ErrorLevelEnum
 from imxInsights.exceptions.imxExceptions import ImxUnconnectedExtension
 from imxInsights.file.imxFile import ImxFile

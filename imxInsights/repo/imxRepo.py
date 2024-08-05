@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from imxInsights.domain.imxObject_old import ImxObject
+from imxInsights.domain.imxObject import ImxObject
 from imxInsights.exceptions import ImxException
 from imxInsights.repo.tree.imxObjectTree import ObjectTree
 

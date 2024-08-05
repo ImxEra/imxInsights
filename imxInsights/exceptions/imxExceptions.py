@@ -1,6 +1,6 @@
 from typing import Any
 
-from imxInsights.domain.imxObject_old import ImxObject
+from imxInsights.domain.imxObject import ImxObject
 from imxInsights.exceptions.customException import CustomException
 from imxInsights.exceptions.exceptionLevels import ErrorLevelEnum
 

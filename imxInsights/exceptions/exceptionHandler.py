@@ -3,7 +3,7 @@ import re
 
 from loguru import logger
 
-from imxInsights.domain.imxObject_old import ImxObject
+from imxInsights.domain.imxObject import ImxObject
 from imxInsights.exceptions.customException import CustomException
 from imxInsights.exceptions.exceptionLevels import ErrorLevelEnum
 
