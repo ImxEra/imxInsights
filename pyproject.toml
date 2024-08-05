@@ -23,7 +23,6 @@ commit_message = "🚀 Version {new_version}"
 path = "imxInsights/__init__.py"
 tag_sign = false
 
-# TODO: split to defatult and dev
 [tool.hatch.envs.default]
 python = "3.12"
 dependencies = [
@@ -98,8 +97,3 @@ dependencies = [
 [project.urls]
 Documentation = "https://ImxEra.github.io/imxInsights/"
 Source = "https://github.com/ImxEra/imxInsights"
-
-
-# todo: make date version
-# https://waylonwalker.com/hatch-version/
-# https://github.com/fleetingbytes/hatch-semver

@@ -19,6 +19,8 @@ This allows end users to switch between single and containerized IMX files with 
 The basic examples below can be switched using the tabs, making the differences clear.
 
 
+*todo: migrate to new [tab](https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/tab/) ensure javascript tab syncer*
+
 ## Load file
 
 === "SingleImx"
@@ -59,3 +61,21 @@ The basic examples below can be switched using the tabs, making the differences 
     ```py
     --8<-- "docs/examples/basic_use/containerImx_main.py:16:"
     ```
+
+### MultiContainer
+=== "SingleImx"
+    ```py
+    --8<-- "docs/examples/basic_use/singleImx_multi_repo.py"
+    ```
+=== "ContainerImx"
+    ```py
+    --8<-- "docs/examples/basic_use/container_imx_multi_repo.py"
+    ```
+
+## Compair Objects
+***Below is a preview feature, changes will be made!***
+
+```py
+--8<-- "docs/examples/basic_use/compair_main.py"
+```
+

@@ -110,7 +110,6 @@ class Imx124ExtensionMapping:
 
 @dataclass(frozen=True)
 class Imx500ExtensionMapping:
-    # todo: no FlankProtectionConfiguration???
     """
     Contains object type extensions specific to IMX version 5.0.0.
 
@@ -131,6 +130,12 @@ class Imx500ExtensionMapping:
     ErtmsSignal: list[str] = field(default_factory=lambda: ["@signalRef"])
     ErtmsBaliseGroup: list[str] = field(default_factory=lambda: ["@baliseGroupRef"])
     ErtmsRoute: list[str] = field(default_factory=lambda: ["@signalingRouteRef"])
+    FlankProtectionConfiguration: list[str] = field(
+        default_factory=lambda: [
+            "@switchMechanismRef",
+            "@position",
+        ]
+    )
 
 
 @dataclass(frozen=True)

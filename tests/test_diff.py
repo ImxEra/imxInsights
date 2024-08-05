@@ -1,3 +1,5 @@
+from imxInsights.compair.compairObject import ImxComparedObject
+
 test_data_container_order_list = (
     "container-1",
     "container-2",
@@ -80,6 +82,6 @@ test_data_fields = {
     ],
 }
 
-# tester = ImxComparedObject(test_data_fields, test_data_container_order_dict)
-# tester_df = tester.as_pandas_df()
-# print()
+tester = ImxComparedObject(test_data_fields, test_data_container_order_dict)
+tester_df = tester.as_pandas_df()
+print()

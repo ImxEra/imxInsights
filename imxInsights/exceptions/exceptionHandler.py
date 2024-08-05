@@ -90,7 +90,7 @@ class ExceptionHandler:
         logger.add(log_file, rotation=cls.LOG_ROTATION_SIZE, level=lvl.value)
 
 
-# todo: we should have a seperated logger for every container, we cam use container id as a key...
+# todo: we should have a separated logger for every container, we cam use container id as a key...
 #   make sure we got minimal shared state so we could use no GIL in the feature.
 timestamp = datetime.datetime.now().isoformat()
 safe_timestamp = re.sub(r"[:]", "-", timestamp)

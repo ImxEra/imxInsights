@@ -45,6 +45,9 @@ theme:
 extra_css:
   - stylesheets/extra.css
 
+extra_javascript:
+  - javascripts/extra.js
+
 markdown_extensions:
     - toc:
         permalink: true
@@ -98,9 +101,12 @@ nav:
           - ImxFile: reference/imx_file.md
         - ImxRepo:
             - ImxRepo: reference/repo/imx_repo.md
+            - ImxMultiRepo: reference/repo/multi_repo.md
             - RepoConfig: reference/repo/config.md
             - RepoBuilders: reference/repo/repo_builders.md
             - BuildExceptions: reference/repo/repo_exceptions.md
+        - ImxCompair:
+            - ImxCompair: reference/repo/imx_compair.md
         - Exceptions:
            - Custom Exceptions: reference/exceptions/exceptions.md
            - Exception Handler: reference/exceptions/exceptions_handler.md
